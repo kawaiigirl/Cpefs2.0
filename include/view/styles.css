@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Verdana, sans-serif;
     background-color: #f4f4f4;
 }
 
@@ -10,18 +10,16 @@ body {
 }
 
 header {
-    background-color: #333;
     padding: 10px;
     text-align: center;
     color: #fff;
 }
 
 .banner {
-    text-align: center;
+    text-align: left;
 }
 
 .banner img {
-    width: 1000px;
     height: 100px;
 }
 
@@ -40,7 +38,7 @@ nav {
 }
 
 main {
-    padding: 20px;
+  /*  padding: 20px;*/
 }
 
 footer {
@@ -49,7 +47,60 @@ footer {
     text-align: center;
     padding: 10px;
 }
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftColumn {
+    float: left;
+    width: 75%;
+    min-width: 800px;
+}
+.evenColumns{
+    float:left;
+    width: calc(50% - 20px);
+    margin-left:10px;
+    margin-right:10px;
+    min-width: 480px;
+}
+.midColumn{
+    margin:0 auto;
+    width: 75%;
+}
+/* Right column */
+.rightColumn {
+    float: left;
+    width: 25%;
 
+    padding-left: 20px;
+}
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Header/ Title */
+.header {
+    padding: 10px;
+    text-align: center;
+    background: #03b0d8;
+    margin: 0px;
+    color: #333;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
 @media (max-width: 600px) {
     nav {
         flex-direction: column;

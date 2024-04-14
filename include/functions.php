@@ -20,7 +20,18 @@ function GetNavLinks($loggedIn=false): array
     }
     return $navLinks;
 }
-
+function get_admin_receive_email_id()
+{
+    global $dbc;
+    $qry="select admin_receive_email from cpefs_settings ";
+    return $dbc->getSingleData($qry,__LINE__,__FILE__);
+}
+function get_admin_send_email_id()
+{
+    global $dbc;
+    $qry="select admin_send_email from cpefs_settings ";
+    return $dbc->getSingleData($qry,__LINE__,__FILE__);
+}
 trait errorArrayTrait
 {
     public array $errors = array();
