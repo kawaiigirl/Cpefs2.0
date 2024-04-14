@@ -1,6 +1,3 @@
-<?php
-global $navLinks,$content;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +24,9 @@ global $navLinks,$content;
         }
         ?>
     </nav>
+
+</div>
+<div class="container">
     <main>
         <?php
         echo $content;

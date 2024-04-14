@@ -238,8 +238,10 @@ function registerMember($name, $first_name, $last_name, $address, $suburb, $post
     }
 }
 
+
 function sendAdminRegistrationEmail($name)
 {
+
     $body = "Hi Administrator,<br><br>A new member,$name, has registered. Please go to the admin section to see their 
 					details.<br><br>Regards,<br>CPEFS";
     $altBody = "Hi Administrator, 
