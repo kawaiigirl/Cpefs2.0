@@ -78,12 +78,6 @@ input,select,.rightData,textarea{
     display: inline-block;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
 .nonInteractiveInput{
     border: #dedede solid 1px;
    background-color: #d2d2d2;
@@ -111,11 +105,7 @@ input,select,.rightData,textarea{
         width: 100%;
         min-width: 200px;
     }
-    .container
-    {
-        width:100%;
 
-    }
     body{
         padding:0;
     }

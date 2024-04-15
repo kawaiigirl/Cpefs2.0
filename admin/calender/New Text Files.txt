@@ -1,0 +1,4 @@
+<script language="javascript" src="../includes/popcalendar.js"></script>
+<form name="search">
+<input type="text" name="sdate" class="inputTypesm" onfocus='popUpCalendar(this,document.search.sdate,"yyyy-mm-dd")' >
+</form>

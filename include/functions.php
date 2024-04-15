@@ -1,36 +1,16 @@
 <?php
-function GetNavLinks($loggedIn=false): array
-{
-    $navLinks = array(
-        array("href" => "index.php", "text" => "Home"),
-        array("href" => "contact.php", "text" => "Contact Us"),
-        array("href" => "legals.php", "text" => "Legals")
-    );
-    if($loggedIn)
-    {
-        $navLinks[] = array("href" => "Units.php", "text" => "Units");
-        $navLinks[] = array("href" => "Units_availability.php", "text" => "Unit Availability");
-        $navLinks[] = array("href" => "my_bookings.php", "text" => "My Bookings");
-        $navLinks[] = array("href" => "make_booking.php", "text" => "Make Booking");
-        $navLinks[] = array("href" => "logout.php", "text" => "Logout");
-    }
-    else
-    {
-        $navLinks[] = array("href" => "login.php", "text" => "Login");
-    }
-    return $navLinks;
-}
+
 function get_admin_receive_email_id()
 {
     global $dbc;
     $qry="select admin_receive_email from cpefs_settings ";
-    return $dbc->getSingleData($qry,__LINE__,__FILE__);
+    return $dbc->getSingleDataPDO($qry,__LINE__,__FILE__);
 }
 function get_admin_send_email_id()
 {
     global $dbc;
     $qry="select admin_send_email from cpefs_settings ";
-    return $dbc->getSingleData($qry,__LINE__,__FILE__);
+    return $dbc->getSingleDataPDO($qry,__LINE__,__FILE__);
 }
 trait errorArrayTrait
 {
@@ -245,7 +225,7 @@ class Functions
     public static function LogError($msg)
     {
         global $dbc;
-        $dbc->LogError($msg);
+      //  $dbc->LogError($msg);
     }
 
     public static function consoleLogArray(array $output)
@@ -331,7 +311,7 @@ class Functions
         }
     }
 
-    public static function LogException(Exception $e)
+  /*  public static function LogException(Exception $e)
     {
         global $dbc;
         $msg = "ExceptionError:: " . $e->getMessage() . " " . $e->getFile() . " " . $e->getLine() . " " . $e->getTraceAsString() . " " . $e->getCode();
@@ -344,7 +324,7 @@ class Functions
         $msg = "ExceptionError:: " . $e->getMessage() . " " . $e->getFile() . " " . $e->getLine() . " " . $e->getTraceAsString() . " " . $e->getCode();
         $dbc->LogError($msg);
     }
-
+*/
     public static function CheckRecaptcha(array $postArray): bool
     {
         // $ip = $_SERVER['REMOTE_ADDR'];

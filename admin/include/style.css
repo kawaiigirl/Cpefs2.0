@@ -1,0 +1,532 @@
+body{
+	margin:0;
+	text-align:center;
+	background:#FFFFFF;
+}
+.logo{
+	display:inline-table;
+	width:225px;
+	height:59px;
+	<!--background: url(images/logo.gif) no-repeat left;-->
+	z-index:500;
+}
+.admin_text{
+	display:inline-table;
+	width:225px;
+	height:63px;
+	background: url(../images/admin_text.gif) no-repeat left;
+	z-index:500;
+}
+.menu_bar_head{
+	display:inline-table;
+	width:223px;
+	height:41px;
+	background: url(../images/menu_bar_head.gif) no-repeat left;
+	z-index:500;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	padding-left:10px;
+}
+.menu_bar_foot{
+	display:inline-table;
+	width:223px;
+	height:4px;
+	background: url(../images/menu_bar_foot.gif) no-repeat left;
+	z-index:500;
+}
+.body_head1{
+	display:inline-table;
+	width:6px;
+	height:44px;
+	background: url(../images/body_head1.gif) no-repeat left;
+	z-index:500;
+}
+.body_head2{
+	display:inline-table;
+	width:6px;
+	height:44px;
+	background: url(../images/body_head2.gif) no-repeat left;
+	z-index:500;
+}
+.body_foot1{
+	display:inline-table;
+	width:6px;
+	height:4px;
+	background: url(../images/body_foot1.gif) no-repeat left;
+	z-index:500;
+}
+.body_foot2{
+	display:inline-table;
+	width:6px;
+	height:4px;
+	background: url(../images/body_foot2.gif) no-repeat left;
+	z-index:500;
+}
+/**/.body_bg1{
+		background: url(../images/body_bg1.gif) repeat;
+		font-weight:bold;
+}
+.body_bg2{
+	background: url(../images/body_bg2.gif) repeat;
+}
+.top_td{
+	background:#37458D;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #ffffff;
+	font-weight: bold;
+	padding-right:10px;
+}
+.foot_td{
+	background:#ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #37458D;
+	font-weight: bold;
+	height:30px;
+}
+.menu_td{
+	height:20px;
+	padding-left:10px;
+}
+/**/.bg1{
+		background: url(../images/bg2.gif) repeat;
+		padding-right:10px;
+}
+/**/.bg3{
+		background: url(../images/bg3.gif) repeat;
+		height:36px;
+}
+.foot_bg{
+	background: url(../images/foot_bg.gif) repeat;
+	height:29px;
+}
+/**/.heading {
+  	background: #37458D;
+  	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	font-weight: bold;
+	height:25px;
+	padding-left:5px;
+}
+.label_name1 {
+  	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	font-weight: bold;
+	height:25px;
+	padding-right:5px;
+}
+.header{
+  	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	height:25px;
+	padding-right:5px;
+}
+
+.logform{
+	border:1px solid #000000;
+	background: #CCD5E6;
+	font:11px Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	width:160px;
+	height:16px;
+	padding-top:0;
+	text-align:inherit
+}
+.inptbox, .inptbox200, .inptbox250 {
+	border:1px solid #000000;
+	background: #FFFFFF;
+	font:11px Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	height:16px;
+	padding-top:0;
+	text-align:inherit
+}
+.inptbox200{
+	width:200px;
+}
+.inptbox250{
+	width:250px;
+}
+
+/**/.button1 {
+	border: 1px solid #000000;
+	background-color: #37458D;
+	height:20px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+
+.link1
+ {
+ color:#ffffff;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:10px;
+ font-weight:bold;
+ text-decoration:none
+ }
+.link1:hover
+ {
+ color:#ffffff;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:10px;
+ font-weight:bold;
+ text-decoration:underline;
+ }
+ .link2
+ {
+ color:#000000;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:11px;
+ font-weight:bold;
+ text-decoration:none
+ }
+.link2:hover
+ {
+ color:#DE0101;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:11px;
+ font-weight:bold;
+ text-decoration:none
+ }
+ 
+ .link3
+ {
+ color:#ffffff;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:12px;
+ font-weight:bold;
+ text-decoration:none
+ }
+.link3:hover
+ {
+ color:#ffffff;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:12px;
+ font-weight:bold;
+ text-decoration:underline;
+ }
+
+.linkWhite
+ {
+ color:#FFFFFF;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:11px;
+ font-weight:bold;
+ text-decoration:underline
+ }
+.linkWhite:hover
+ {
+ color:#FFFFFF;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:11px;
+ font-weight:bold;
+ text-decoration:none
+ }
+ .linkBody
+ {
+ color:#000000;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ font-size:12px;
+ text-decoration:underline;
+ }
+.linkBody:hover
+ {
+ color:#DE0101;
+ font-family:Verdana, Arial, Helvetica, sans-serif;;
+ font-size:12px;
+ text-decoration:none;
+ }
+
+
+	#mainContainer{
+		text-align:left;
+		background-color:#FFFFFF;
+	}
+	
+	#leftContainer{
+		float:left;
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	#contentContainer{
+		float:left;
+	}
+	.ad{
+		clear:both;
+		text-align:center;
+		padding:5px;
+	}	
+	.error
+	 {
+	 color:red;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+	 font-size:11px;
+	 text-decoration:none;
+	}
+
+	
+	/* END DEMO CSS */
+	#dhtmlgoodies_menu{
+		font-family: arial, serif;	/* Font for main menu items */
+		width:225px;	/* Width of main menu */
+
+		 font-size:11px;
+		 font-weight:bold;
+		 text-decoration:none
+	}
+	#dhtmlgoodies_menu	li{	/* Main menu <li> */
+		list-style-type:none;	/* No bullets */
+		margin:0;	/* No margin - needed for Opera */
+	}
+	#dhtmlgoodies_menu ul{	
+		margin:0;	/* No <ul> air */
+		padding:0;	/* No <ul> air */
+	}
+	#dhtmlgoodies_menu ul li ul{	/* Styling for those who doesn't have javascript enabled */
+		padding-left:10px;
+	}
+	#dhtmlgoodies_menu	li a{	/* Main menu links */
+		text-decoration:none;	/* No underline */
+		color:#000000;	/* Black text color */
+		
+		height:20px;	/* 20 pixel height */
+		line-height:20px;	/* 20 pixel height */
+		vertical-align:middle;	/* Align text in the middle */
+		border:1px solid #FF8AC5;	/* Black border */
+		background-color:#FFFFFF;	/* Light blue background color */
+		margin:1px;	/* A little bit of air */
+		padding:1px;	/* A	ir between border and text inside */
+		
+		display:block;
+	}
+	#dhtmlgoodies_menu	li a:hover,#dhtmlgoodies_menu .activeMainMenuItem{
+		color:#000066;
+		background-color:#FFDFEF;
+	}
+	.dhtmlgoodies_subMenu{
+		visibility:hidden;
+		position:absolute;
+		overflow:hidden;
+		border:1px solid #FF8AC5;
+		background-color:#FFFFFF;
+		text-align:left;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		 font-size:11px;
+		 font-weight:bold;
+		 text-decoration:none
+	}
+	.dhtmlgoodies_subMenu ul{
+		margin:0;
+		padding:0;
+	}
+	.dhtmlgoodies_subMenu ul li{
+		list-style-type:none;
+		margin:0;
+		padding:1px;	/* 1px of air between submenu border and sub menu item - (the "white" space you see on mouse over )*/
+	}
+	.dhtmlgoodies_subMenu ul li a{	/* Sub menu items */
+		white-space:nowrap;	/* No line break */
+		text-decoration:none;	/* No underline */
+		color:#000;	/* Black text color */
+		
+		height:16px;	/* 16 pixels height */
+		line-height:16px;	/* 16 pixels height */
+		padding:1px;	/* 1px of "air" inside */
+		
+		display:block;	/* Display as block - you shouldn't change this */
+	}
+	.dhtmlgoodies_subMenu ul li a:hover { /* Sub menu items - mouse over effects */
+		color: #000066; /* White text */
+		background-color: #FFDFEF; /* Blue background */
+	}
+
+
+
+<!-- -->
+
+/*--------------------------------------------------|
+| dTree 2.05 | www.destroydrop.com/javascript/tree/ |
+|---------------------------------------------------|
+| Copyright (c) 2002-2003 Geir Landr�               |
+|--------------------------------------------------*/
+
+.dtree {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	white-space: nowrap;
+}
+.dtree img {
+	border: 0;
+	vertical-align: middle;
+}
+.dtree a {
+	color: #333;
+	text-decoration: none;
+}
+.dtree a.node, .dtree a.nodeSel {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+	color: #333;
+	text-decoration: underline;
+}
+.dtree a.nodeSel {
+	background-color: #c0d2ec;
+}
+.dtree .clip {
+	overflow: hidden;
+}
+
+.module {
+	color:Black;
+}
+.target {
+	color:Red;
+}
+.actual {
+	color:Purple;
+}
+.assigned {
+	color:Blue;
+}
+
+.assignment {
+	color:Black;
+}
+.assignment_download_student {
+	color:Brown;
+}
+.assignment_download_teacher {
+	color:Purple;
+}
+.assignment_student {
+	color:Magenta;
+}
+
+.assignment_correction {
+	color:Red;
+}
+.assignment_suggession {
+	color:Blue;
+}
+input.textbox_date {
+	border:1px solid #1E588A;
+	background:#fff;
+	margin:1px;
+	width:88px;
+	height:16px;
+	font-size:9px;
+	}
+	
+.rating 
+{
+	 border:none;
+	 width:13px;
+	 height:12px;
+}
+
+.textarea {
+	border:1px solid #1E588A;
+	background:#fff;
+	margin:1px;
+	height:100px;
+	width:300px;
+	font-size:12px;
+	}
+.thumbnail {
+	width:50px;
+	height:50px;
+}
+
+.dropdown
+{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+}
+
+.inptboxdisplayonly
+{
+	text-decoration:none;
+	border:solid 0 #fff;
+	background-color:transparent;
+}
+
+.bgc
+{ 
+	background-COLOR: #E2ECFE; 
+ 	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+  	height:25px;
+	padding-right:5px;
+}
+.bgc2
+{ 
+	background-COLOR: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height:25px;
+	padding-right:5px;
+
+}
+
+a.paginationLink {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-decoration:none;
+	color: #005ebe;
+}
+a.paginationLink:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:bold;
+	text-decoration:underline;
+	color: #005ebe;
+}
+
+div.pagination {
+	padding: 3px;
+	margin: 3px;
+}
+
+div.pagination a {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #AAAADD;
+	
+	text-decoration: none; /* no underline */
+	color: #37458D;
+}
+div.pagination a:hover, div.pagination a:active {
+	border: 1px solid #37458D;
+
+	color: #000;
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+		border: 1px solid #37458D;
+		
+		font-weight: bold;
+		background-color: #37458D;
+		color: #FFF;
+	}
+	div.pagination span.disabled {
+		padding: 2px 5px 2px 5px;
+		margin: 2px;
+		border: 1px solid #EEE;
+	
+		color: #DDD;
+	}
+	

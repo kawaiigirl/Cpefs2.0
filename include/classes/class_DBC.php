@@ -1,160 +1,294 @@
 <?php
 class DBC
 {
-
-    private string $errorlogTable;
-    private string $errorContact;
+	private mysqli $mysqli;
+	private string $errorlogTable;
+	private string $errorContact;
     private PDO    $pdo;
 
-    public function __construct(string $errorlogTable, string $errorContact)
+    public function __construct(mysqli $mysqliConn, string $errorlogTable, string $errorContact)
+	{
+		$this->mysqli = $mysqliConn;
+		$this->errorlogTable = $errorlogTable;
+		$this->errorContact = $errorContact;
+	}
+	//cpefs branch
+
+    public function openPDO()
     {
-        $this->errorlogTable = $errorlogTable;
-        $this->errorContact = $errorContact;
+        try {
+            $dsn      = "mysql:dbname=".DB_NAME."; host=".DB_HOST;
+            $user     = DB_USER;
+            $password = DB_PWD;
 
-        $dsn      = "mysql:dbname=".DB_NAME."; host=".DB_HOST;
-        $user     = DB_USER;
-        $password = DB_PWD;
-
-        $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                           PDO::ATTR_DEFAULT_FETCH_MODE                      => PDO::FETCH_ASSOC,
         );
-        $this->pdo = new PDO($dsn, $user, $password, $options);
-        $this->pdo->query("SET time_zone = '+10:00'");
-    }
+            $this->pdo = new PDO($dsn, $user, $password, $options);
+            $this->pdo->query("SET time_zone = '+10:00'");
 
-    public function LogError($errorMessage)
+        } catch (PDOException $e) {
+            if(LOCALHOST)
+             echo 'Connection failed: ' . $e->getMessage();
+        }
+    }
+//deprecated
+//creates a reference array for mysqli binding parameters
+    /** @noinspection PhpArrayAccessCanBeReplacedWithForeachValueInspection */
+    public static function valRef(& $arr): array
     {
-        $qry = "INSERT INTO $this->errorlogTable SET error_message = :msg,date=:now";
-        $parameters = array('msg'=>$errorMessage,'now'=>Now());
+        $refs = array();
+
+        foreach ($arr as $key => $value)
+        {
+            $refs[$key] =&$arr[$key]; //ignore php storms suggestion
+        }
+        return $refs;
+    }
+    public function getInsertID()
+    {
+        return $this->mysqli->insert_id;
+    }
+    private function mysqliLogError($mysqli,$qry,$msg,$line,$file)
+    {
+        echo "<p style='color:red;'>There has been a database error, please contact $this->errorContact </p>";
+        $this->LogError("SQL: $qry Error Number:  $mysqli->errno Msg: $msg File: $file Line: $line ");
+        if(LOCALHOST)
+        {
+            // the query failed and debugging is enabled
+            echo "<p style='color:red;border:solid black 1px;background:white;'>$msg";
+            echo "<br/><br/>Error on line number: <span style='color:black;'><strong>". $line ."</strong></span> of file:  <span style='color:black;'><strong>". $file ."</strong></span><br/>";
+            echo "In query: $qry<br/><br/>Error number:";
+            echo $mysqli->errno." Mysqli error:".$mysqli->error ."</p>";
+            Die();
+        }
+    }
+/////reports mysqli errors
+    private function mysqliErrorCheck($res,$qry,$line,$file)
+    {
+        if (!$res )
+        {
+            $this->mysqliLogError($this->mysqli,$qry,"",$line,$file);
+            echo "<p style='color:red;border:solid black 1px;background:white;'>There has been a database error please contact $this->errorContact</p><br/>";
+        }
+    }
+    public function getNumRows($qry,$line,$file,$parameters=null)
+    {
+        $result=$this->preparedQuery($qry,$parameters,$line,$file);
+        if(is_a($result, 'mysqli_result')) {
+            return mysqli_num_rows($result);
+        }
+        else
+        {
+            return mysqli_num_rows($result->get_result());
+        }
+    }
+    public function update($qry,$line,$file,$parameters):bool
+    {
+        $result =  $this->preparedQuery($qry,$parameters,$line,$file);
+        if($result->errno == 0)
+            return true;
+        else
+            return false;
+    }
+    public function insert($qry,$line,$file,$parameters) :bool
+    {
+        $result =  $this->preparedQuery($qry,$parameters,$line,$file);
+        if($result->errno == 0)
+            return true;
+        else
+            return false;
+    }
+    public function delete($qry,$line,$file,$parameters):bool
+    {
+        $result = $this->preparedQuery($qry,$parameters,$line,$file);
+        if($result->errno == 0)
+            return true;
+        else
+            return false;
+    }
+    private function LogError($errorMessage)
+    {
+        $qry = "INSERT INTO $this->errorlogTable SET $this->errorlogTable.error_message = ?,$this->errorlogTable.date=now()";
+        $parameters = array("s",& $errorMessage);
         $this->insert($qry,__LINE__,__FILE__,$parameters);
     }
+    /*public function runMultipleQueries($sql,$line,$file):bool
+    {
+        $qry =  "Start Transaction;";
+        $qry .= $sql;
+        $qry .= "Commit;";
+        $res = $this->mysqli->multi_query($qry);
+        While($this->mysqli->more_results())
+        {
+            $this->mysqliErrorCheck($this->mysqli->next_result(),$qry,$line,$file);
+        }
+        return $res;
+    }*/
     public function getLastInsertID(): string
     {
         return $this->pdo->lastInsertId();
     }
-    public function getNumRows($qry, $line, $file, $parameters=null): int
+    public function getNumRowsPDO($qry,$line,$file,$parameters=null): int
     {
-        $result=$this->preparedQuery($qry, $line, $file, $parameters);
-        if($result)
-            return $result->rowCount();
-        return 0;
+        $result=$this->preparedPDOQuery($qry, $line, $file, $parameters);
+        return $result->rowCount();
     }
-    public function doesThisExist($qry, $line, $file, $parameters=null): bool
+    public function doesThisExistPDO($qry,$line,$file,$parameters=null): bool
     {
-        if($this->getNumRows($qry, $line, $file,$parameters)>0)
+        if($this->getNumRowsPDO($qry,$parameters,$line,$file)>0)
             return true;
         else
             return false;
     }
-    public function update($qry, $line, $file, $parameters):bool
+    public function updatePDO($qry,$line,$file,$parameters):bool
     {
-        $result =  $this->preparedQuery($qry, $line, $file, $parameters);
-        if($result)
-            return true;
-        else
-            return false;
-    }
-    public function updateWithRowCount($qry, $line, $file, $parameters):bool
-    {
-        $result =  $this->preparedQuery($qry, $line, $file, $parameters);
-        if($result)
-            return $result->rowCount();
-        else
-            return false;
-    }
-    public function insert($qry, $line, $file, $parameters) :bool
-    {
-        $result =  $this->preparedQuery($qry, $line, $file, $parameters);
+        $result =  $this->preparedPDOQuery($qry, $line, $file, $parameters);
         if($result)
             return true;
         else
             return false;
     }
-    public function delete($qry, $line, $file, $parameters):bool
+    public function insertPDO($qry,$line,$file,$parameters) :bool
     {
-        $result = $this->preparedQuery($qry, $line, $file, $parameters);
+        $result =  $this->preparedPDOQuery($qry, $line, $file, $parameters);
         if($result)
             return true;
         else
             return false;
     }
-    public function getSingleData($qry, $line, $file, $parameters = null)
+    public function deletePDO($qry,$line,$file,$parameters):bool
     {
-        $res = $this->preparedQuery($qry, $line, $file, $parameters);
-        if($res)
-        {
-            $row = $res->fetch(PDO::FETCH_NUM);
-            if($row)
-                return $row[0];
-        }
-        return false;
-    }
-    public function getSingleRow($qry, $line, $file, $parameters = null)
-    {
-        $res = $this->preparedQuery($qry, $line, $file, $parameters);
-        if($res)
-            return $res->fetch();
+        $result = $this->preparedPDOQuery($qry, $line, $file, $parameters);
+        if($result)
+            return true;
         else
             return false;
     }
-    public function getResult($qry, $line, $file, $parameters = null): array
+    public function getSingleDataPDO($qry,$line,$file,$parameters = null)
     {
-        $res = $this->preparedQuery($qry, $line, $file, $parameters);
+        $res = $this->getResultPDO($qry,$line,$file,$parameters);
+        $row = $res->fetch(PDO::FETCH_NUM);
+        return $row[0];
+    }
+    public function getSingleRowPDO($qry, $line, $file, $parameters = null)
+    {
+        $res = $this->getResultPDO($qry,$line,$file,$parameters);
+        return $res->fetch();
+    }
+    public function getResultPDO($qry,$line,$file,$parameters = null)
+    {
+        return $this->preparedPDOQuery($qry, $line, $file, $parameters);
+    }
+    public function getArrayResult($qry, $line, $file, $parameters):array
+    {
+        $res = $this->preparedPDOQuery($qry, $line, $file, $parameters);
         if($res)
             return  $res->fetchAll(PDO::FETCH_ASSOC);
         else
             return array();
     }
-    private function preparedQuery($qry, $line, $file, $parameters)
+    private function preparedPDOQuery($qry, $line, $file, $parameters)
     {
         if ($parameters != null)
         {
-            try
+            $stmt = $this->pdo->prepare($qry);
+
+            $stmt->execute($parameters);
+            if($stmt == false)
             {
-                $stmt = $this->pdo->prepare($qry);
-                $stmt->execute($parameters);
-                return $stmt;
+                $this->logErrorPDO($qry,$line,$file,$parameters);
             }
-            catch (Exception $e)
-            {
-                Functions::LogException($e);
-                $this->reportError($qry, $line, $file, $parameters,$stmt);
-                return false;
-            }
+            return $stmt;
+
         }
-        return $this->query($qry, $line, $file);
+        return $this->queryPDO($qry,$line,$file);
     }
-    private function query($qry, $line, $file)
+    private function queryPDO($qry,$line,$file)
     {
         $res = $this->pdo->query($qry);
         if(!$res)
-            $this->reportError($qry, $line, $file);
+            $this->logErrorPDO($qry,$line,$file);
         return $res;
     }
-    private function reportError($qry, $line, $file, $parameters = null,PDOStatement $stmt = null)
+    private function logErrorPDO($qry,$line,$file,$parameters = null)
     {
+        echo "<p style='color:red;border:solid black 1px;background:white;'>There has been a database error please contact $this->errorContact</p><br/>";
+        $msg = implode(":",$this->pdo->errorInfo());
 
-        $msg = implode(" : ",$stmt->errorInfo());
-        $errorCode = $stmt->errorCode();
-
-        $errorMessage = "SQL: $qry | Error code: $errorCode | Error message: $msg | Parameters: ".implode(',',$parameters)." | File: $file | Line: $line ";
+        $this->LogError("SQL: $qry Error message: $msg Parameters: ".implode(',',$parameters)." File: $file Line: $line ");
         if(LOCALHOST)
         {
-            echo "<p style='color:red;border:solid black 1px;background:white;'>$errorMessage<p>";
+            // the query failed and debugging is enabled
+            echo "<p style='color:red;border:solid black 1px;background:white;'>$msg";
+            echo "<br/><br/>Error on line number: <span style='color:black;'><strong>". $line ."</strong></span> of file:  <span style='color:black;'><strong>". $file ."</strong></span><br/>";
+            echo "In query: $qry<br/><br/>Error number:";
+            Die();
+        }
+    }
+    ///Mysqli functions ::deprecated
+    public function getSingleData($qry,$line,$file,$parameters = null)
+    {
+        $res = $this->getResult($qry,$line,$file,$parameters);
+        $row = $res->fetch_array(MYSQLI_NUM);
+        return $row[0];
+    }
+    public function getSingleRow($qry, $line, $file, $parameters = null)
+    {
+        $res = $this->getResult($qry,$line,$file,$parameters);
+        return $res->fetch_array(MYSQLI_ASSOC);
+    }
+    public function getResult($qry,$line,$file,$parameters = null)// : bool|array php 8
+    {
+        if($parameters != null) {
+            $stmt =$this->preparedQuery($qry, $parameters, $line, $file);
+            if(is_a($stmt, 'mysqli_result'))
+                return $stmt;
+            else
+                return $stmt->get_result();
         }
         else
-        {
-            echo "<p style='color:red;border:solid black 1px;background:white;'>There has been a database error</p><br/>";
-
-        }
-        $this->LogError($errorMessage);
+            return $this->query($qry, $line, $file);
     }
-    public static function get_enum_values( $table, $field )
+
+    private function preparedQuery($qry,$parameters,$line,$file)
     {
-        global $dbc;
-        $type = $dbc->getResult("SHOW COLUMNS FROM $table WHERE Field = '$field'",__LINE__,__FILE__)[0]["Type"];
-        preg_match("/^enum\('(.*)'\)$/", $type, $matches);//"/^enum\(\'(.*)\'\)$/"
-        return explode("','", $matches[1]);
+        if ($parameters != null)
+        {
+            if (!($stmt =$this->mysqli->prepare($qry))) {
+                $msg = "Prepare failed: (" . $this->mysqli->errno . ") " . $this->mysqli->error;
+                $this->mysqliLogError($stmt, $qry, $msg, $line, $file);
+                //  return false;
+            }
+
+            //bind parameters
+            if (!call_user_func_array(array($stmt, 'bind_param'), $parameters)) {
+                $msg = "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error . "Parameter: " . '"' . implode('","', $parameters) . '"';
+                $this->mysqliLogError($stmt, $qry, $msg, $line, $file);
+                //   return false;
+            }
+
+            //execute
+            if (!$stmt->execute()) {
+                $msg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                $this->mysqliLogError($stmt, $qry, $msg, $line, $file);
+                //  return false;
+            }
+            /*$res =  $stmt->get_result();
+            if($res == false)
+                return true;
+            else
+                return $res;*/
+            return $stmt;
+        }
+        return $this->query($qry,$line,$file);
+    }
+/////executes mysqli query with error checking etc.
+    private function query($qry,$line,$file)
+    {
+        $res = $this->mysqli->query($qry);
+        $this->mysqliErrorCheck($res,$qry,$line,$file);
+        return $res;
     }
 
 
