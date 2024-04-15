@@ -293,8 +293,8 @@ function validateMemberLogin($email, $password): array
 function verifyMemberLogin($email, $password): array
 {
     global $dbc;
-    $qry = "Select * from cpefs_members where member_email=:email";
-    $row = $dbc->getSingleRow($qry, __LINE__, __FILE__, array('email'=>$email));
+    $qry = "Select * from cpefs_members where member_email=?";
+    $row = $dbc->getSingleRow($qry, __LINE__, __FILE__, array('s',&$email));
 
     $returnArray = array();
     $returnArray['password_expired'] = false;

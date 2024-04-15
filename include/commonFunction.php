@@ -23,10 +23,10 @@ function GetNavLinks($loggedIn=false): array
     $navLinks[] = array("href" => "logout.php", "text" => "Logout");
     return $navLinks;
 }
-function GetUnits()
+
+function DisplayPostOrGet(string $variableName, $default = "")
 {
-    global $dbc;
-    return $dbc->getResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
+    echo SetFromPostOrGet($variableName, $default);
 }
 function getAdminPagingVariables($qry, $page, $qryParams = null, $qryParamTypes= null): array
 {

@@ -1,6 +1,7 @@
 <?php
 function getUnits()
 {
+
     global $dbc;
     return $dbc->getResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
 }
@@ -30,4 +31,21 @@ function getUnitRates(int $unit_id): array
     global $dbc;
     $row=$dbc->getSingleRow("Select * from cpefs_units where unit_id=?",__LINE__,__FILE__,array('i',&$unit_id));
     return array('basic_rate'=> $row['basic_rate'],'weekend_rate'=> $row['weekend_rate'],'peak_rate'=>$row['peak_rate']);
+}
+function getUnitsSelectOptions($unit_id=""): void
+{
+    global $dbc;
+    ?><option <?php if($unit_id=="")echo "Selected";?> value="">Please select</option>
+    <?php
+
+    $res=$dbc->getResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__) ;
+    while($row=$res->fetch_array(MYSQLI_ASSOC))
+    {
+        ?>
+        <option <?php if ($unit_id==$row['unit_id'])echo "Selected";?> value="<?php echo $row['unit_id']?>">
+            <?php echo show_text($row['unit_name'])?>
+        </option>
+        <?php
+    }
+
 }

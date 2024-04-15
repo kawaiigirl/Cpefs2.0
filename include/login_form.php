@@ -58,7 +58,7 @@ if(isset($_POST['loginbtn']))
                 {
                     $_SESSION['member_id']=$member['member_id'];
                     $_SESSION['mem_name']=$member['member_name'];
-                    header("Location: myaccount.php");
+                    header("Location: my_account.php");
                     exit;
                 }
             }
