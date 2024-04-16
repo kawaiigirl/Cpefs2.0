@@ -1,0 +1,8 @@
+[03-Jan-2023 03:31:06 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getResult() on null in /home2/cpefsone/public_html/scripts/menu.php:20
+Stack trace:
+#0 {main}
+  thrown in /home2/cpefsone/public_html/scripts/menu.php on line 20
+[11-Jan-2023 15:15:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getResult() on null in /home2/cpefsone/public_html/scripts/menu.php:20
+Stack trace:
+#0 {main}
+  thrown in /home2/cpefsone/public_html/scripts/menu.php on line 20

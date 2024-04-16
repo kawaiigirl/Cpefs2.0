@@ -84,6 +84,7 @@ footer {
         display: none;
         flex-direction: column;
         text-align: center;
+        width: 50%;
     }
 
     .nav-links.show {
@@ -92,6 +93,11 @@ footer {
 
     .nav-button {
         display: block;
+        width: 50%;
+        text-align: center;
+    }
+    .nav-button.navButtonWidth{
+        width: 100%;
     }
 
     .banner img {

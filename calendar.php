@@ -1,4 +1,5 @@
 <?php
+include "include/authenticator.php";
 
 function getDay($dd, $mm, $yy): string
 {

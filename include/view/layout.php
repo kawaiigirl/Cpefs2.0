@@ -12,6 +12,32 @@ function AddGenericHead($filePath = "") : void
 </head>
 <?php
 }
+function GetNavLinks(): array
+{
+    $loggedIn = isset($_SESSION['member_id']);
+    $navLinks = array();
+    if($loggedIn)
+    {
+        $navLinks[] = array("href" => "units.php", "text" => "Units");
+        $navLinks[] = array("href" => "unit_availability.php", "text" => "Unit Availability");
+        $navLinks[] = array("href" => "my_account.php", "text" => "My Account");
+        $navLinks[] = array("href" => "my_bookings.php", "text" => "My Bookings");
+        $navLinks[] = array("href" => "make_booking.php", "text" => "Make Booking");
+    }
+
+    $navLinks[] = array("href" => "contact.php", "text" => "Contact Us");
+    $navLinks[] =  array("href" => "legals.php", "text" => "Legals");
+    if($loggedIn)
+    {
+        $navLinks[] = array("href" => "logout.php", "text" => "Logout");
+    }
+    else
+    {
+        $navLinks[] = array("href" => "login.php", "text" => "Login");
+    }
+    return $navLinks;
+}
+
 function AddHeader_StartMain($navLinks,$filePath = "") : void
 {
     ?>
@@ -21,6 +47,7 @@ function AddHeader_StartMain($navLinks,$filePath = "") : void
         <div class="banner">
             <img src="<?=$filePath?>include/view/images/logo.png" alt="CPEFS Holiday Units">
             <nav>
+                <button class="nav-button navButtonWidth" onclick="toggleNavLinks()">Menu</button>
                 <div class="nav-links">
                 <?php
                 foreach($navLinks as $link)
@@ -29,7 +56,7 @@ function AddHeader_StartMain($navLinks,$filePath = "") : void
                 }
                 ?>
                 </div>
-                <button class="nav-button" onclick="toggleNavLinks()">Menu</button>
+
             </nav>
         </div>
     </div>
@@ -53,6 +80,8 @@ function AddFooter_CloseMain() : void
         function toggleNavLinks() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('show');
+            const navButton = document.querySelector('.nav-button');
+            navButton.classList.toggle('navButtonWidth');
         }
     </script>
 <?php

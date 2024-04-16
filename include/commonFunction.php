@@ -1,33 +1,6 @@
 <?php
-function GetNavLinks($loggedIn=false): array
-{
-    $navLinks = array(
-        array("href" => "index.php", "text" => "Home")
-    );
-    // if($loggedIn)
-    // {
-    $navLinks[] = array("href" => "units.php", "text" => "Units");
-    $navLinks[] = array("href" => "unit_availability.php", "text" => "Unit Availability");
-    $navLinks[] = array("href" => "my_account.php", "text" => "My Account");
-    $navLinks[] = array("href" => "my_bookings.php", "text" => "My Bookings");
-    $navLinks[] = array("href" => "make_booking.php", "text" => "Make Booking");
 
-    //  }
-    //  else
-    //  {
 
-    //$navLinks[] = array("href" => "login.php", "text" => "Login");
-    // }
-    $navLinks[] = array("href" => "contact.php", "text" => "Contact Us");
-    $navLinks[] =  array("href" => "legals.php", "text" => "Legals");
-    $navLinks[] = array("href" => "logout.php", "text" => "Logout");
-    return $navLinks;
-}
-
-function DisplayPostOrGet(string $variableName, $default = "")
-{
-    echo SetFromPostOrGet($variableName, $default);
-}
 function getAdminPagingVariables($qry, $page, $qryParams = null, $qryParamTypes= null): array
 {
     global $dbc;
@@ -137,7 +110,22 @@ function setFromPostOrGet($variable)
     else
         return "";
 }
-
+function SetFromPost($variableName) : string
+{
+    if(isset($_POST[$variableName]) && $_POST[$variableName]!='')
+    {
+        return $_POST[$variableName];
+    }
+    return '';
+}
+function DisplayPost(string $variableName)
+{
+    echo  SetFromPost($variableName);
+}
+function DisplayPostOrGet(string $variableName, $default = "")
+{
+    echo SetFromPostOrGet($variableName, $default);
+}
 function get_admin_receive_email_id()
 {
     global $dbc;

@@ -1,6 +1,7 @@
 <?php
 include "include/base_includes.php";
-include("include/view/layout.php");
+include "include/authenticator.php";
+include "include/view/layout.php";
 
 global $dbc;
 $sql="Select cpefs_booking.*,cpefs_units.unit_name From cpefs_booking

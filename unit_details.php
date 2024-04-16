@@ -1,7 +1,7 @@
 <?php
-
 include "include/base_includes.php";
-include("include/view/layout.php");
+include "include/authenticator.php";
+include "include/view/layout.php";
 
 if(isset($_GET['id']))
 {

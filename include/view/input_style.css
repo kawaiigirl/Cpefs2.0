@@ -90,11 +90,9 @@ input,select,.rightData,textarea{
     color: #4f4f4f;;
 }
 
-
-
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    label,.leftData,.rightData, input,button, input[type=submit],input[type=text],input[type=email],input[type=password] {
+    label,.leftData,.rightData,select, input,button, input[type=submit],input[type=text],input[type=email],input[type=password] {
         width: 100%;
         margin-top: 0;
 
