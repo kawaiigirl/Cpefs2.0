@@ -1,5 +1,5 @@
 <?php
-function AddGenericHead($filePath = "") : void
+function AddGenericHead($filePath = "",$links="") : void
 {
     ?>
 <head>
@@ -8,6 +8,7 @@ function AddGenericHead($filePath = "") : void
     <link rel="stylesheet" href="<?=$filePath?>include/view/styles.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/column.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/input_style.css">
+    <?=$links?>
     <title>CPEFS Holiday Units</title>
 </head>
 <?php

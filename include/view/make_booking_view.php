@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-AddGenericHead();
+AddGenericHead(""," <link rel='stylesheet' href='include/view/datepicker.css'>");
 
 AddHeader_StartMain(GetNavLinks());
 ?>
@@ -45,8 +45,9 @@ AddHeader_StartMain(GetNavLinks());
                     </select> <span class='error'><?php if (isset($errors['nights'])) echo $errors['nights']; ?></span>
                 </div>
                 <div class="row"><label for="check_in_date">Check In Date</label>
-                    <input type="text" name="check_in_date" id='check_in_date' onclick="showCal('Calendar1')" readonly value="<?php if (isset($_POST['check_in_date'])) echo $_POST['check_in_date']; ?>" >
-                    <a href="javascript:showCal('Calendar1')"><img src="images/calendar.png" align="absmiddle" alt="Select Check-in-date" border="0"></a>&nbsp;<span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
+                    <div class="calendar" id="calendar"></div>
+                    <input type="text" id="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>" >
+                    &nbsp;<span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
                 </div>
                 <input type="checkbox" name="agree" id='agree' value="yes"> <label for="agree">I agree to the
                     <a href="legals.php">Legal Terms </a></label><span class='error'><?php if (isset($errors['agree'])) echo $errors['agree']; ?></span>
@@ -60,13 +61,7 @@ AddHeader_StartMain(GetNavLinks());
 }
 AddFooter_CloseMain();
 ?>
-<script language="javascript" src="include/scripts/cal2.js">
-    /*
-    Xin's Popup calendar script-  Xin Yang (http://www.yxscripts.com/)
-    Script featured on/available at http://www.dynamicdrive.com/
-    This notice must stay intact for use
-    */
-</script>
-<script language="javascript" src="include/scripts/cal_conf2.js"></script>
+
+<script language="javascript" src="include/datepicker.js"></script>
 
 </html>

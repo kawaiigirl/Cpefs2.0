@@ -27,7 +27,7 @@ AddHeader_StartMain(GetNavLinks());
                         <li> 2nd bedroom&nbsp; 2 x single beds</li>
                         <li>Second bathroom with bath</li>
                         <li>Laundry auto washer and dryer</li>
-                        <li> Fully equiped kitchen with dishwasher wall oven cook top and microwave</li>
+                        <li> Fully equipped kitchen with dishwasher wall oven cook top and microwave</li>
                         <li>Lounge and dinning room with TV DVD and VCR balcony</li>
                         <li>Ceiling fans throughout</li>
                         <li><strong>New</strong> - double &quot;Murphy&quot; bed,&nbsp;full size double innerspring
@@ -36,10 +36,10 @@ AddHeader_StartMain(GetNavLinks());
                         <?php break;
                     case 2: ?>
                         <li>Unit 5 3 bedroom townhouse</li>
-                        <li>Master bedroom with two way bathroom queen bed TV bedroom airconditioned</li>
+                        <li>Master bedroom with two-way bathroom queen bed TV bedroom airconditioned</li>
                         <li>2nd bedroom 2x single beds</li>
                         <li>3rd bedroom 2x single beds</li>
-                        <li>Fully equiped kitchen with oven cooktop dishwasher and microwave</li>
+                        <li>Fully equipped kitchen with oven cooktop dishwasher and microwave</li>
                         <li>Bathroom laundry with washer dryer</li>
                         <?php break;
                     case 3: ?>
@@ -49,7 +49,7 @@ AddHeader_StartMain(GetNavLinks());
                         <li>2nd bathroom</li>
                         <li>3rd bedroom 1x double bed & Balcony</li>
                         <li>Laundry with washer dryer</li>
-                        <li>Fully equiped kitchen with wall oven cook top microwave and dishwasher & Balcony</li>
+                        <li>Fully equipped kitchen with wall oven cook top microwave and dishwasher & Balcony</li>
                         <li>Lounge and dinning room with TV DVD and balcony</li>
                         <?php break;
                     case 4: ?>
@@ -57,7 +57,7 @@ AddHeader_StartMain(GetNavLinks());
                         <li>Master bedroom ensuite queen bed and TV</li>
                         <li>2nd Bedroom 2x single beds</li>
                         <li>Second bathroom / laundry with bath and washer dryer</li>
-                        <li>Fully equiped kitchen with wall oven, cook top, microwave and dishwasher</li>
+                        <li>Fully equipped kitchen with wall oven, cook top, microwave and dishwasher</li>
                         <li>Lounge and dinning room with TV, DVD, VCR, and balcony</li>
                         <?php break;
                     case 5: ?>
@@ -65,9 +65,9 @@ AddHeader_StartMain(GetNavLinks());
                         <li>Main bedroom with ensuite and queen bed</li>
                         <li>2nd bedroom 2x single beds</li>
                         <li>3rd bedroom 2x single beds balcony</li>
-                        <li>Seperate WC</li>
+                        <li>Separate WC</li>
                         <li>Bathroom / laundry with washer dryer</li>
-                        <li>Fully equiped kitchen with wall oven cooktop dishwasher and microwave</li>
+                        <li>Fully equipped kitchen with wall oven cooktop dishwasher and microwave</li>
                         <li>Lounge dinning room with TV DVD VCR balcony</li>
                     <?php } ?>
             </ul>
