@@ -14,7 +14,7 @@ function renderCalendar(year, month) {
 
     calendarElement.innerHTML = `
       <div class="calendar-header">
-       <span class="calendar-month"><strong>${monthNames[month - 1]}<br>${year}</strong></span>
+       <span class="calendar-month"><strong>${monthNames[month - 1]} ${year}</strong></span>
 <button onclick="previousMonth()"><strong>&#8249;</strong></button><button onclick="nextMonth()"><strong>&#8250;</strong></button>
       </div>
       <div class="calendar-days">
@@ -38,6 +38,7 @@ function renderCalendar(year, month) {
     for (let day = 1; day <= lastDay; day++) {
         const dayElement = document.createElement('div');
         dayElement.classList.add('calendar-day');
+        dayElement.setAttribute("id", 'day'+day);
         dayElement.textContent = day;
         if ([5, 6].includes((startingOffset + day - 1) % 7)) {
             dayElement.classList.add('weekend'); // Add class for weekend days
@@ -47,26 +48,23 @@ function renderCalendar(year, month) {
             dayElement.classList.add('disabled'); // Disable days before today
         } else {
             dayElement.addEventListener('click', () => {
-                selectDate(currentDateObject);
+                selectDate(currentDateObject,'day'+day);
             });
         }
         daysElement.appendChild(dayElement);
     }
 }
 
-function selectDate(date) {
+function selectDate(date,clickedOnDayElement) {
     const selectedDay = calendarElement.querySelector('.selected');
     if (selectedDay) {
         selectedDay.classList.remove('selected');
     }
+
     selectedDate = date;
-    const dayElements = calendarElement.querySelectorAll('.calendar-day');
-    dayElements.forEach(dayElement => {
-        dayElement.classList.remove('selected');
-    });
-    const firstDayOfMonth = new Date(currentYear, currentMonth - 1, 1).getDay();
-    const selectedDayElement = calendarElement.querySelector(`.calendar-day:nth-child(${date.getDate() + firstDayOfMonth})`);
-    selectedDayElement.classList.add('selected');
+
+    const newSelectedDay =  document.getElementById(clickedOnDayElement);
+    newSelectedDay.classList.add('selected');
     updateInput();
 }
 

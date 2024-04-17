@@ -1,6 +1,6 @@
 .calendar {
 
-    padding: 20px;
+    padding: 0 20px 20px;
     float: right;
     width: 70%;
     margin-top: 6px;
@@ -27,7 +27,6 @@ width: 100%;
     text-align: center;
     background-color: #03b0d8;
     padding: 7px 20px;
-
 }
 .calendar-days {
     display: grid;
@@ -42,7 +41,7 @@ width: 100%;
 .calendar-day.weekend {
     background-color: #f0f0f0; /* Light gray background for weekends */
 }
-.selected {
+.calendar-day.weekend.selected,.selected{
     background-color: lightblue;
 }
 .disabled {
@@ -51,8 +50,6 @@ width: 100%;
 }
 @media screen and (max-width: 600px) {
     .calendar {
-
-
         width: 100%;
     }
     .calendar-header button{
