@@ -9,34 +9,48 @@ AddHeader_StartMain(GetNavLinks());
     <div class="card">
             <h1>
                 <?php echo show_text($booking['unit_name']) ?>
-                <span style="padding: 12px 5px 10px 9px;"><img src="unit_image/<?php echo $booking['unit_image'] ?>" alt="unit images" align="right">
-                </span>
             </h1>
-        <div class="lightbox-overlay">
-            <div class="lightbox-content">
-                <?php
-                switch ($_GET['id'])
-                {
-                    case '1':
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <?php
+            switch ($_GET['id'])
+            {
+                case '1':
                     $name = "beachhaven";
                     break;
-                    case '2': $name ="cocobay";
+                case '2': $name ="cocobay";
                     break;
-                    case '3': $name ="focus";
+                case '3': $name ="focus";
                     break;
-                    case '4': $name ="peninsular";
+                case '4': $name ="peninsular";
                     break;
-                }
-                for($i=1;$i<=7;$i++)
-                {
-                    echo " <img src='include/view/images/units/".$name."0".$i.".jpg' alt='Lightbox Image'>";
-                }
-                ?>
-
-                <button class="lightbox-prev">&lt; Previous</button>
-                <button class="lightbox-next">Next &gt;</button>
-            </div>
+            }
+            $numberOfImages = 7;
+            for($i=1;$i<=$numberOfImages;$i++)
+            {
+                $captionText="";
+                echo "<div class='mySlides fade'>
+                <div class='numbertext'>$i/ 3</div>";
+                echo " <img src='include/view/images/units/".$name."0".$i.".jpg'  style='width:100%'>";
+                echo "<div class='text'>$captionText</div></div>";
+            }
+            ?>
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
+        <br>
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+        <?php
+        for($i=1;$i<=$numberOfImages;$i++)
+        {
+            echo " <span class='dot' onclick='currentSlide($i)'></span>";
+        }
+        ?>
+        </div>
+
+
             <p><?php echo show_text($booking['unit_location']) ?></p>
             <p>Basic - <?php echo "$" . $booking['basic_rate'] ?><br>
                 Peak - <?php echo "$" . $booking['peak_rate'] ?><br>
