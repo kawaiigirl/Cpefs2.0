@@ -30,7 +30,7 @@ AddHeader_StartMain(GetNavLinks());
             {
                 $captionText="";
                 echo "<div class='mySlides fade'>
-                <div class='numbertext'>$i/ 3</div>";
+                <div class='numbertext'>$i/$numberOfImages</div>";
                 echo " <img src='include/view/images/units/".$name."0".$i.".jpg'  style='width:100%'>";
                 echo "<div class='text'>$captionText</div></div>";
             }
