@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-AddGenericHead();
+AddGenericHead(""," <link rel='stylesheet' href='include/view/lightbox.css'>");
 
 AddHeader_StartMain(GetNavLinks());
 ?>
@@ -12,6 +12,31 @@ AddHeader_StartMain(GetNavLinks());
                 <span style="padding: 12px 5px 10px 9px;"><img src="unit_image/<?php echo $booking['unit_image'] ?>" alt="unit images" align="right">
                 </span>
             </h1>
+        <div class="lightbox-overlay">
+            <div class="lightbox-content">
+                <?php
+                switch ($_GET['id'])
+                {
+                    case '1':
+                    $name = "beachhaven";
+                    break;
+                    case '2': $name ="cocobay";
+                    break;
+                    case '3': $name ="focus";
+                    break;
+                    case '4': $name ="peninsular";
+                    break;
+                }
+                for($i=1;$i<=7;$i++)
+                {
+                    echo " <img src='include/view/images/units/".$name."0".$i.".jpg' alt='Lightbox Image'>";
+                }
+                ?>
+
+                <button class="lightbox-prev">&lt; Previous</button>
+                <button class="lightbox-next">Next &gt;</button>
+            </div>
+        </div>
             <p><?php echo show_text($booking['unit_location']) ?></p>
             <p>Basic - <?php echo "$" . $booking['basic_rate'] ?><br>
                 Peak - <?php echo "$" . $booking['peak_rate'] ?><br>
@@ -84,4 +109,6 @@ AddHeader_StartMain(GetNavLinks());
 <?php
 AddFooter_CloseMain();
 ?>
+
+<script language="javascript" src="include/view/lightbox.js"></script>
 </html>

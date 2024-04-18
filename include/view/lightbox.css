@@ -1,0 +1,24 @@
+.lightbox-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: #555;
+}
