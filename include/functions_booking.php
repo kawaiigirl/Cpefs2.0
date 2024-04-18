@@ -2,6 +2,9 @@
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+require 'include/PHPMailer/Exception.php';
+require 'include/PHPMailer/PHPMailer.php';
+require 'include/PHPMailer/SMTP.php';
 function makePayment($bookingid,$paymentmethod,$amount,$comment)
 {
     global $dbc;
@@ -309,7 +312,7 @@ function sendEmail($bookingId,$toAddress,$subject,$body,$altBody,$page,$type,$re
     $mail->AltBody = $altBody;
 
     //Add some extra reporting info to alt body
-    $databaseLog = "to:".$toAddress. " cc:".  $admin_email . " host:" . $mail_host . " " . $altBody . " DEBUG: ". $GLOBALS['debugmsg'];
+    $databaseLog = "to:".$toAddress. " cc:".  $admin_email . " " . $altBody . " DEBUG: ". $GLOBALS['debugmsg'];
 
     if($attachment)
     {

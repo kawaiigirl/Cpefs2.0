@@ -2,7 +2,9 @@ const calendarElement = document.getElementById('calendar');
 let selectedDate = null;
 let currentYear = null;
 let currentMonth = null;
-
+let selectedMonth=null;
+let selectedYear = null;
+let selectedDay = null;
 function renderCalendar(year, month) {
     currentYear = year;
     currentMonth = month;
@@ -62,7 +64,6 @@ function selectDate(date,clickedOnDayElement) {
     }
 
     selectedDate = date;
-
     const newSelectedDay =  document.getElementById(clickedOnDayElement);
     newSelectedDay.classList.add('selected');
     updateInput();
@@ -71,18 +72,25 @@ function selectDate(date,clickedOnDayElement) {
 function updateInput() {
     const inputField = document.getElementById('check_in_date');
     if (selectedDate) {
-        inputField.value = selectedDate.toLocaleDateString('en-GB');
+        inputField.value = selectedDate.toLocaleDateString("en-GB");
+        let date = inputField.value.split('/');
+        inputField.value = date[2] + '/' + date[1] + '/' + date[0];
+
     } else {
         inputField.value = '';
     }
 }
 
 function previousMonth() {
+
     if (currentMonth === 1) {
         renderCalendar(currentYear - 1, 12);
+
     } else {
         renderCalendar(currentYear, currentMonth - 1);
     }
+    reSelectDay()
+
 }
 
 function nextMonth() {
@@ -91,8 +99,18 @@ function nextMonth() {
     } else {
         renderCalendar(currentYear, currentMonth + 1);
     }
+    reSelectDay()
 }
 
-// Initialize calendar
-const today = new Date();
-renderCalendar(today.getFullYear(), today.getMonth() + 1);
+function reSelectDay()
+{
+    if(selectedDate) {
+        let selectedDateArray = selectedDate.toLocaleDateString("en-GB").split('/');
+        selectedYear = parseInt(selectedDateArray[2]);
+        selectedMonth = parseInt(selectedDateArray[1]);
+        selectedDay = parseInt(selectedDateArray[0]);
+        if (selectedMonth === currentMonth && selectedYear === currentYear) {
+            selectDate(selectedDate, 'day' + selectedDay)
+        }
+    }
+}

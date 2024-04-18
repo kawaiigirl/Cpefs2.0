@@ -41,12 +41,12 @@ AddHeader_StartMain(GetNavLinks());
                         <option <?php if (IsPostSetAndEquals('nights', "3")) echo "Selected"; ?> value="3">3 Nights (Fri-Mon) </option>
                         <option <?php if (IsPostSetAndEquals("nights", "4")) echo "Selected"; ?> value="4">4 Nights (Mon-Fri) </option>
                         <option <?php if (IsPostSetAndEquals("nights", "7")) echo "Selected"; ?> value="7">7 Nights (Mon-Mon) </option>
-                        <option <?php if (IsPostSetAndEquals("nights", "14")) echo "Selected"; ?> value="14" selected>14 Nights (Mon-Mon) </option>
+                        <option <?php if (IsPostSetAndEquals("nights", "14")) echo "Selected"; ?> value="14">14 Nights (Mon-Mon) </option>
                     </select> <span class='error'><?php if (isset($errors['nights'])) echo $errors['nights']; ?></span>
                 </div>
                 <div class="row"><label for="check_in_date">Check In Date</label>
                     <div class="calendar" id="calendar"></div>
-                    <input type="text" id="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>" >
+                    <input type="text" id="check_in_date" name="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>" >
                     &nbsp;<span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
                 </div>
                 <input type="checkbox" name="agree" id='agree' value="yes"> <label for="agree">I agree to the
@@ -63,5 +63,35 @@ AddFooter_CloseMain();
 ?>
 
 <script language="javascript" src="include/datepicker.js"></script>
+<?php
 
+if(IsPostSetAndNotEmpty('check_in_date'))
+{
+    $checkInDate =  SetFromPost('check_in_date');
+    $checkInDateArray = explode('/', SetFromPost('check_in_date'));
+    $day = "day". $checkInDateArray[2];
+    echo "<script>
+
+        // Initialize calendar
+        const today = new Date();
+        console.log('$checkInDateArray[0] $checkInDateArray[1]')
+         selectedDate = new Date($checkInDateArray[0], $checkInDateArray[1] - 1, $checkInDateArray[2]);
+        year = $checkInDateArray[0];
+        month = $checkInDateArray[1];
+        renderCalendar(year, month);
+        selectDate(selectedDate,'$day')
+        </script>";
+}
+else{
+    echo "<script language='javascript'>
+        // Initialize calendar
+        const today = new Date();
+        renderCalendar(today.getFullYear(), today.getMonth() + 1);
+        </script>";
+}
+// Output JavaScript code to set focus based on the PHP variable
+if ($focusOnError != "") {
+    echo "<script>document.getElementById('".$focusOnError."').focus();</script>";
+}
+?>
 </html>

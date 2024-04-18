@@ -1,4 +1,5 @@
 <?php
+require_once incPATH."validator.php";
 class Booking
 {
     //Member details

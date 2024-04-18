@@ -2,10 +2,12 @@
 include "include/base_includes.php";
 include "include/authenticator.php";
 include "include/view/layout.php";
+const incPATH = "include/";
+include "include/classes/class_Booking.php";
+include "include/functions_booking.php";
 global $dbc;
-
+$focusOnError = "";
 $success= "";
-$focusOnError="unit_id";
 $sql=$dbc->getSingleRow("Select active from cpefs_members Where member_id =?",__LINE__,__FILE__,array("i",&$_SESSION['member_id']));
 
 if(!$sql || $sql['active'] != 1)
