@@ -1,0 +1,84 @@
+.calendar-wrapper {
+   /* overflow-x: auto;*/
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid #ddd;
+
+    text-align: center;
+    position: relative;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+a.available-link{
+
+    cursor: pointer;
+}
+span.unavailable-day {
+    background-color: #999; /* Grey for unavailable days */
+
+}
+a.available-link, span.unavailable-day {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.unit-date {
+    color: #555;
+    font-weight: bold;
+}
+.calendar-unit-div{
+    display: block;
+    height: 35px;
+}
+.unit-name{
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.unit-1 { background-color: #3498db; }
+.unit-2 { background-color: #e74c3c; }
+.unit-3 { background-color: #2ecc71; }
+.unit-4 { background-color: #f39c12; }
+.unit-5 { background-color: #f39c12; }
+
+.unavailable { background-color: #999; }
+
+.faint-text {
+    color: #ccc;
+}
+
+/* Add new CSS styles for month dropdown */
+#monthDropdown {
+    padding: 10px;
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.availability-calendar {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width:30%;
+
+}
+
+select {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}

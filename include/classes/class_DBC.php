@@ -180,7 +180,7 @@ class DBC
     {
         return $this->preparedPDOQuery($qry, $line, $file, $parameters);
     }
-    public function getArrayResult($qry, $line, $file, $parameters):array
+    public function getArrayResult($qry, $line, $file, $parameters = null):array
     {
         $res = $this->preparedPDOQuery($qry, $line, $file, $parameters);
         if($res)

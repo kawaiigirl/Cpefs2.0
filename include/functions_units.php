@@ -1,9 +1,13 @@
 <?php
 function getUnits()
 {
-
     global $dbc;
     return $dbc->getResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
+}
+function getUnitsArray()
+{
+    global $dbc;
+    return$dbc->getArrayResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
 }
 function getUnitStandardRate($unit_id,$check_in_date,$nights):float
 {

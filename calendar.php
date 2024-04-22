@@ -12,13 +12,13 @@ function getDay($dd, $mm, $yy): string
     if (mysqli_num_rows($res) > 0)
     {
         if ($row['approve'] == 1 || $row['approve'] == 0)
-            return "<b><td align=center class='Green'>$dd</td>";
+            return "<b><td class='Green'>$dd</td>";
         elseif ($row['approve'] == 2)
-            return "<b><td align=center class='Blue'>$dd</td>";
+            return "<b><td class='Blue'>$dd</td>";
     }
     else
-        return "<td align=center>$dd</td>";
-    return "<td align=center>$dd</td>";
+        return "<td>$dd</td>";
+    return "<td>$dd</td>";
 }
 
 $bgcolor="#FFFFFF";
@@ -74,7 +74,7 @@ $start_day = date('D', $my_time); //Month starting Day
 $start_daynum = date('w', $my_time);
 $daysIM =$noOfDays;
 ?>
-<table width="75%" border="0" align="center" cellpadding="0" cellspacing="5">
+<table class="unit-calendar" border="0" align="center" cellpadding="0" cellspacing="5" >
   <tr> 
     <td height="20" colspan="7"> <div align="center"><a href="#" name="cal"></a>
 	<a href="unit_details.php?id=<?php echo $_GET['id']?>&yr=<?php echo ($prevyr)?>&mnth=<?php echo ($prevmnth)?>#cal" class="calendarlink">&lt; previous month &gt;</a>
@@ -85,21 +85,21 @@ $daysIM =$noOfDays;
    </td>
   </tr>
   <tr> 
-    <td height="20"><div align="center"><strong>S</strong></div></td>
-    <td height="20"><div align="center"><strong>M</strong></div></td>
-    <td height="20"><div align="center"><strong>T</strong></div></td>
-    <td height="20"><div align="center"><strong>W</strong></div></td>
-    <td height="20"><div align="center"><strong>T</strong></div></td>
-    <td height="20"><div align="center"><strong>F</strong></div></td>
-    <td height="20"><div align="center"><strong>S</strong></div></td>
+    <td height="20"><div><strong>S</strong></div></td>
+    <td height="20"><div><strong>M</strong></div></td>
+    <td height="20"><div><strong>T</strong></div></td>
+    <td height="20"><div><strong>W</strong></div></td>
+    <td height="20"><div><strong>T</strong></div></td>
+    <td height="20"><div><strong>F</strong></div></td>
+    <td height="20"><div><strong>S</strong></div></td>
   </tr>
   <?php
 	$dd = 0;
 	$daye = 1;
-	echo "<tr bgcolor=$tablecolor>";
+	echo "<tr style='background-color: $tablecolor'>";
 	while($dd < $start_daynum)
 	{
-		echo  "<td bgcolor='#FFFFFF'></td>";
+		echo  "<td style='background-color: $bgcolor'></td>";
 		$dd = $dd+1;
 	}
 	
@@ -115,7 +115,7 @@ $daysIM =$noOfDays;
 	$noOfRows=1;
 	while($daye <= $daysIM)
 	{
-		echo "<tr bgcolor=$tablecolor>";
+		echo "<tr style='background-color: $tablecolor'>";
 		$noOfRows +=1;
 		$dd = 0;
 		while($dd<7)
@@ -128,13 +128,13 @@ $daysIM =$noOfDays;
             }
 			else
 			{
-				echo  "<td bgcolor='#FFFFFF'></td>";
+				echo  "<td style='background-color: $bgcolor'></td>";
             }
             $dd++;
         }
 		echo "</tr>";
 	}
 	if($noOfRows==5)
-		echo "<tr bgcolor='#FFFFFF'><td colspan='7'>&nbsp;</td></tr>";
+		echo "<tr  style='background-color: $bgcolor'><td colspan='7'>&nbsp;</td></tr>";
 	?>
 </table> 
