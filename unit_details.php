@@ -12,4 +12,5 @@ else
     $booking=$dbc->getSingleRow("Select * From cpefs_units Where unit_status=1 And unit_id=1",__LINE__,__FILE__);
     $_GET['id'] = 1;
 }
+
 require "include/view/unit_details_view.php";

@@ -1,6 +1,9 @@
 <?php
 
-
+function isFutureDate($date): bool
+{
+    return date("Y-m-d",strtotime($date)) >= date("Y-m-d");
+}
 function getAdminPagingVariables($qry, $page, $qryParams = null, $qryParamTypes= null): array
 {
     global $dbc;

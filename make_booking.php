@@ -6,6 +6,12 @@ const incPATH = "include/";
 include "include/classes/class_Booking.php";
 include "include/functions_booking.php";
 global $dbc;
+
+
+$_POST['unit_id']=SetFromPostOrGet('unit_id');
+$check_in_date =explode("-",SetFromPostOrGet('check_in_date'));
+$check_in_date = implode("/",$check_in_date);
+$_POST['check_in_date'] =$check_in_date;
 $focusOnError = "";
 $success= "";
 $sql=$dbc->getSingleRow("Select active from cpefs_members Where member_id =?",__LINE__,__FILE__,array("i",&$_SESSION['member_id']));
@@ -14,7 +20,7 @@ if(!$sql || $sql['active'] != 1)
 {
     $success="<span style='color:red;'>&nbsp;Current Member is unable to book a unit, please <a href='contact.php'>contact</a> the administrator.</span> ";
 }
-elseif(count($_POST)>0)
+elseif(isset($_POST['button']))
 {
     $validationResult = Booking::validateInput($_SESSION['member_id'], $_POST['unit_id'], $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['phone'], $_POST['check_in_date'], $_POST['nights']);
     $errors = $validationResult['errMsg'];
