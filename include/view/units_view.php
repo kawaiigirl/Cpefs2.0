@@ -11,24 +11,16 @@ AddHeader_StartMain(GetNavLinks());
 <div class="card">
     <table style="width: 100%; border-collapse: collapse">
         <tr>
-          <td></td>
-          <td height="30" colspan="3"><div align="center">
-              <strong>Rates (including linen) </strong>
-            </div></td>
-            <td></td>
+            <th></th>
+            <th colspan="3"><strong>Rates (including linen)</strong></th>
+            <th></th>
         </tr>
         <tr>
-          <td height="30"><strong>Unit</strong></td>
-          <td height="30"><div align="center">
-              <strong>Basic</strong>
-            </div></td>
-          <td height="30"><div align="center">
-             <strong>Peak</strong>
-            </div></td>
-          <td height="30"><div align="center">
-              <strong>Weekends</strong>
-            </div></td>
-          <td></td>
+          <th><strong>Unit</strong></th>
+          <th style="width: 18%"><strong>Basic</strong></th>
+          <th style="width: 18%"><strong>Peak</strong></th>
+          <th style="width: 18%"><strong>Weekends</strong></th>
+          <th></th>
         </tr>
 		<?php
         global $dbc;
@@ -42,11 +34,11 @@ AddHeader_StartMain(GetNavLinks());
                 $bg = "#e0e0e0"
 		?>
         <tr style="background-color: <?=$bg?>">
-          <td height="55"><a href="unit_details.php?id=<?php echo $row['unit_id']?>"><?php echo show_text($row['unit_name'])?></a></td>
-          <td height="55"><div align="center"><?php echo "$".$row['basic_rate']?></div></td>
-          <td height="55"><div align="center"><?php echo "$".$row['peak_rate']?></div></td>
-          <td height="55"><div align="center"><?php echo "$".$row['weekend_rate']?></div></td>
-          <td height="55"><img src="include/view/images/book_now.jpg" alt="Book Now" width="71" height="17" onClick="window.location.href='make_booking.php?id=<?php echo $row['unit_id']?>'"></td>
+          <td><a class="nav-link" style="display:block; width: 100%; text-align: center" href="unit_details.php?id=<?=$row['unit_id']?>"><?=show_text($row['unit_name'])?></a></td>
+          <td><?="$".$row['basic_rate']?></td>
+          <td><?="$".$row['peak_rate']?></td>
+          <td><?="$".$row['weekend_rate']?></td>
+            <td><a class="nav-link book-now" href="make_booking.php?id=<?=$row['unit_id']?>">Book Now</a></td>
         </tr>
 		<?php
 		}

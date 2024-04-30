@@ -14,9 +14,9 @@ AddHeader_StartMain(GetNavLinks());
     else
     {
     ?>
-    <div class="midColumn"><h1 class="header">Make Booking</h1>
+    <h1 class="header">Make Booking</h1>
+    <div class="midColumn">
         <div class="card clearfix">
-
             <form name="form2" method="post" action="">
                 <div class="row"><label for="unit_id"> Unit</label>
                     <select name="unit_id" id="unit_id">

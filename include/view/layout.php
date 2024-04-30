@@ -8,6 +8,7 @@ function AddGenericHead($filePath = "",$links="") : void
     <link rel="stylesheet" href="<?=$filePath?>include/view/styles.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/column.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/input_style.css">
+    <link rel="stylesheet" href="<?=$filePath?>include/view/tables.css">
     <?=$links?>
     <title>CPEFS Holiday Units</title>
 </head>
@@ -47,21 +48,22 @@ function AddHeader_StartMain($navLinks,$filePath = "") : void
     <div class="container">
         <div class="banner">
             <img src="<?=$filePath?>include/view/images/logo.png" alt="CPEFS Holiday Units">
-            <nav>
-                <button class="nav-button navButtonWidth" onclick="toggleNavLinks()">Menu</button>
-                <div class="nav-links">
-                <?php
-                foreach($navLinks as $link)
-                {
-                    echo "<a href='".$link['href']."' class='nav-link'>".$link['text']."</a>";
-                }
-                ?>
-                </div>
-
-            </nav>
         </div>
     </div>
 </header>
+<nav>
+    <div class="container">
+        <button class="nav-button navButtonWidth" onclick="toggleNavLinks()">Menu</button>
+        <div class="nav-links">
+            <?php
+            foreach($navLinks as $link)
+            {
+                echo "<a href='".$link['href']."' class='nav-link'>".$link['text']."</a>";
+            }
+            ?>
+        </div>
+    </div>
+</nav>
 <main>
     <div class="container">
  <?php

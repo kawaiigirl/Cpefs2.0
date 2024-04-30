@@ -4,10 +4,49 @@ function getUnits()
     global $dbc;
     return $dbc->getResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
 }
-function getUnitsArray()
+function getUnitsArray(): array
 {
     global $dbc;
     return$dbc->getArrayResult("Select * From cpefs_units Where unit_status=1 Order By unit_name",__LINE__,__FILE__);
+}
+function getUnitName($unitID): string
+{
+    return match ($unitID)
+    {
+        '1' => "beachhaven",
+        '2' => "cocobay",
+        '3' => "focus",
+        '5' => "peninsular",
+        default => "",
+    };
+}
+function getNextUnit(int $unitID): int
+{
+    return match ($unitID)
+    {
+        1 => 2,
+        2 => 3,
+        3 => 5,
+        default => 1,
+    };
+}
+function getPreviousUnit(int $unitID): int
+{
+    return match ($unitID)
+    {
+        1 => 5,
+        3 => 2,
+        5 => 3,
+        default => 1,
+    };
+}
+function getNumberOfImagesForUnit($unitID): int
+{
+    return match ($unitID)
+    {
+        '1', '2', '3' => 20,
+        default => 7,
+    };
 }
 function getUnitStandardRate($unit_id,$check_in_date,$nights):float
 {
