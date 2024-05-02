@@ -34,6 +34,7 @@ AddHeader_StartMain(GetNavLinks());
         </div>
     </div>
     <div class="evenColumns">
+        <h1 class="header">Features</h1>
         <div class="card">
             <p><?=show_text($booking['unit_location']) ?></p>
             <p>Basic - <?="$" . $booking['basic_rate'] ?><br>
@@ -47,8 +48,9 @@ AddHeader_StartMain(GetNavLinks());
         </div>
     </div>
     <div class="evenColumns">
+        <h1 class="header">Unit Availability</h1>
         <div class="card">
-                <h2>Unit Availability</h2>
+
                 <?php include "calendar.php"; ?>
                 <p><span class="Green"><strong>Pending</strong></span> - booking to be confirmed<br>
                     <span class="Blue">Booked</span></p>
