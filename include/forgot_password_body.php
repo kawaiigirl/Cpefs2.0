@@ -19,13 +19,10 @@ if(isset($_POST['email']))
 else
 {
 ?>
-    <form method="post" action="" name="reset"><br />
-    <label><strong>Enter Your Email Address:</strong></label><br /><br />
-    <input type="email" name="email" placeholder="username@email.com" />
-    <br /><br />
-    <input type="submit" value="Reset Password"/>
-
-    <br /><br />
+    <form method="post" action="" name="reset">
+        <div class="row"> <label for="email"><strong>Email Address:</strong></label>
+        <input type="email" id="email" name="email" placeholder="username@email.com" /></div>
+        <div class="row"> <input type="submit" value="Reset Password"/></div>
     </form>
 <?php
 }

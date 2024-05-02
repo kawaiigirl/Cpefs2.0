@@ -1,13 +1,13 @@
 <?php
 
-include_once "validator.php";
+include_once "include/validator.php";
 /**
  * @param $email
  * @param $type
  * @param null $id
  * @return false|mixed returns false if no row found. else returns the member/admin associated with the email
  */
-function validateEmail($email, $type, $id = null)
+function validateEmail($email, $type, $id = null): mixed
 {
     global $dbc;
     $clean_email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -33,13 +33,13 @@ function validateEmail($email, $type, $id = null)
                 $parameters['member_id'] = $id;
             }
         }
-
         return $dbc->getSingleRowPDO($sql, __LINE__, __FILE__, $parameters);
     }
     else
+    {
         return false;
+    }
 }
-
 function verifyMemberPasswordFromID($member_id, $password): bool
 {
     global $dbc;
@@ -48,7 +48,6 @@ function verifyMemberPasswordFromID($member_id, $password): bool
 
     return password_verify($password, $row['member_password']);
 }
-
 function validateNewPassword($newPassword, $confirmPassword): array
 {
     $validator = new Validator();
@@ -66,7 +65,6 @@ function validateNewPassword($newPassword, $confirmPassword): array
     }
     return $returnArray;
 }
-
 function validateUpdatedPassword($newPassword, $confirmPassword, $oldPassword, $member_id): array
 {
     $validator = new Validator();
@@ -83,11 +81,9 @@ function validateUpdatedPassword($newPassword, $confirmPassword, $oldPassword, $
         $returnArray['password'] = "<span class='error'> [Password Incorrect]</span>";
         $returnArray['errors'] = true;
     }
-
     return $returnArray;
 }
-
-function registerAdmin($name, $is_admin, $email, $password)
+function registerAdmin($name, $is_admin, $email, $password): bool
 {
     global $dbc;
     $test = $dbc->doesThisExistPDO("Select * from cpefs_admin WHERE email = :email", __LINE__, __FILE__, array("email" => $email));
@@ -102,14 +98,11 @@ function registerAdmin($name, $is_admin, $email, $password)
         return $dbc->insert("Insert into cpefs_admin set name = ?, email=?, password = ?,is_admin = ?", __LINE__, __FILE__, array("sssi", &$name, &$email, &$hash, &$is_admin));
     }
 }
-
 function updateAdmin($id, $name, $is_admin, $email): bool
 {
     global $dbc;
     return $dbc->update("UPDATE cpefs_admin set name = ?, email=?,is_admin = ? WHERE id = ?", __LINE__, __FILE__, array("sssi", &$name, &$email, &$is_admin, &$id));
-
 }
-
 function validateAdmin($name, $email, $password = "", $password2 = "", $id = null): array
 {
     $validator = new Validator();
@@ -126,7 +119,7 @@ function validateAdmin($name, $email, $password = "", $password2 = "", $id = nul
         $returnArray['email'] = "<span class='error'> [Invalid Email Address]</span>";
         $returnArray['errors'] = 1;
     }
-    elseif(validateEmail($email, "member", $id) != false)
+    elseif(validateEmail($email, "member", $id))
     {
         $returnArray['email'] = "<span class='error'> [This Email Address already exists]</span>";
         $returnArray['errors'] = 1;
@@ -148,7 +141,6 @@ function validateAdmin($name, $email, $password = "", $password2 = "", $id = nul
     }
     return $returnArray;
 }
-
 function validateMember($first_name, $last_name, $address, $suburb, $postcode, $phone, $email, $id = null): array
 {
     $validator = new Validator();
@@ -205,15 +197,14 @@ function validateMember($first_name, $last_name, $address, $suburb, $postcode, $
         $returnArray['email'] = "<span class='error'> [Invalid Email Address]</span>";
         $returnArray['errors'] = 1;
     }
-    elseif(validateEmail($email, "member", $id) != false)
+    elseif(validateEmail($email, "member", $id))
     {
         $returnArray['email'] = "<span class='error'> [This Email Address already exists]</span>";
         $returnArray['errors'] = 1;
     }
     return $returnArray;
 }
-
-function registerMember($name, $first_name, $last_name, $address, $suburb, $postcode, $phone, $email, $password)
+function registerMember($name, $first_name, $last_name, $address, $suburb, $postcode, $phone, $email, $password): bool
 {
     global $dbc;
     $numRows = $dbc->getNumRows("Select * from cpefs_members WHERE member_email = ?", __LINE__, __FILE__, array("s", &$email));
@@ -237,9 +228,7 @@ function registerMember($name, $first_name, $last_name, $address, $suburb, $post
         return $dbc->insert("Insert into cpefs_members set $qry", __LINE__, __FILE__, array("sssssisss", &$name, &$first_name, &$last_name, &$address, &$suburb, &$postcode, &$phone, &$email, &$hash));
     }
 }
-
-
-function sendAdminRegistrationEmail($name)
+function sendAdminRegistrationEmail($name): void
 {
 
     $body = "Hi Administrator,<br><br>A new member,$name, has registered. Please go to the admin section to see their 
@@ -251,7 +240,6 @@ function sendAdminRegistrationEmail($name)
                 CPEFS";
     sendEmail(0, get_admin_receive_email_id(), "CPEFS - New Member Registration", $body, $altBody, "Registration", "Registration", "Admin");
 }
-
 function updateMember($id, $name, $first_name, $last_name, $address, $suburb, $postcode, $phone, $email): bool
 {
     global $dbc;
@@ -266,7 +254,6 @@ function updateMember($id, $name, $first_name, $last_name, $address, $suburb, $p
 
     return $dbc->update("UPDATE cpefs_members set $qry WHERE member_id = ?", __LINE__, __FILE__, array("sssssisss", &$name, &$first_name, &$last_name, &$address, &$suburb, &$postcode, &$phone, &$email, &$id));
 }
-
 function validateMemberLogin($email, $password): array
 {
     $validator = new Validator();
@@ -289,7 +276,6 @@ function validateMemberLogin($email, $password): array
     }
     return $returnArray;
 }
-
 function verifyMemberLogin($email, $password): array
 {
     global $dbc;
@@ -301,7 +287,7 @@ function verifyMemberLogin($email, $password): array
 
     if($row && password_verify($password, $row['member_password']))
     {
-        if($row['password_expired'] == true)
+        if($row['password_expired'])
         {
             sendPwdRecoveryEmail($row['member_email'], $row['member_name'], "functions_login", "member");
             $returnArray['success'] = true;
@@ -319,7 +305,6 @@ function verifyMemberLogin($email, $password): array
     }
     return $returnArray;
 }
-
 function verifyAdminLogin($email, $password): array
 {
     global $dbc;
@@ -331,7 +316,7 @@ function verifyAdminLogin($email, $password): array
 
     if(password_verify($password, $row['password']))
     {
-        if($row['password_expired'] == true)
+        if($row['password_expired'])
         {
             sendPwdRecoveryEmail($row['email'], $row['name'], "functions_login", "admin member");
             $returnArray['password_expired'] = true;
@@ -347,8 +332,6 @@ function verifyAdminLogin($email, $password): array
                 $_SESSION['admin'] = $row['id'];
             }
             $_SESSION['IS_ADMIN'] = $row['is_admin'];
-
-            $returnArray['success'] = true;
         }
         $returnArray['success'] = true;
     }
@@ -358,8 +341,7 @@ function verifyAdminLogin($email, $password): array
     }
     return $returnArray;
 }
-
-function updateAdminPassword($password, $email)
+function updateAdminPassword($password, $email): void
 {
     global $dbc;
     $pass_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -367,15 +349,14 @@ function updateAdminPassword($password, $email)
     $dbc->delete("DELETE FROM cpefs_pwd_reset WHERE email=?", __LINE__, __FILE__, array("s", &$email));
 }
 
-function updateMemberPasswordFromID($password, $id)
+function updateMemberPasswordFromID($password, $id): void
 {
     global $dbc;
     $pass_hash = password_hash($password, PASSWORD_DEFAULT);
     $dbc->updatePDO("UPDATE cpefs_members SET member_password=:password WHERE member_id=:id", __LINE__, __FILE__, array("id" => $id, 'password' => $pass_hash));
-
 }
 
-function updateMemberPasswordFromEmail($password, $email)
+function updateMemberPasswordFromEmail($password, $email): void
 {
     global $dbc;
     $pass_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -387,7 +368,7 @@ function sendPwdRecoveryEmail($email, $name, $page, $recipient): string
 {
     global $dbc;
     $expFormat = mktime(
-        date("H"), date("i"), date("s"), date("m"), date("d") + 1, date("Y")
+        date("H"), date("i"), date("s"), date("m"), (int)date("d") + 1, date("Y")
     );
     $expDate = date("Y-m-d H:i:s", $expFormat);
     $token = md5(microtime() . $email);
@@ -401,11 +382,11 @@ function sendPwdRecoveryEmail($email, $name, $page, $recipient): string
         $relative_url = '/admin';
     }
 
-    //URLEncode GET parametres
+    //URLEncode GET parameters
     $email = urlencode($email);
     $token = urlencode($token);
 
-    $reset_Password_link = SITE_URL . $relative_url . "/reset-password.php?token=$token&email=$email&action=reset";
+    $reset_Password_link = SITE_URL . $relative_url . "/reset_password.php?token=$token&email=$email&action=reset";
 
     $body = "<p>Dear $name,</p>";
     $body .= "<p>Please click on the following link to reset your password.</p>";
@@ -416,10 +397,10 @@ function sendPwdRecoveryEmail($email, $name, $page, $recipient): string
     $body .= '<p>If you did not request this forgotten password email, no action is needed, your password will not be reset.</p>';
     $body .= "<p>Thanks,<br>";
     $body .= "Cpefs Admin</p>";
-    $altbody = "Please view this email in html";
+    $altBody = "Please view this email in html";
     $subject = "Password Recovery - CPEFS";
 
-    return sendEmail("0", urldecode($email), $subject, $body, $altbody, $page, "password recovery", $recipient);
+    return sendEmail("0", urldecode($email), $subject, $body, $altBody, $page, "password recovery", $recipient);
 }
 function GetMember($email)
 {
