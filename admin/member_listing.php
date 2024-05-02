@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 include_once "redirect_to_adminlogin.php";
-include "../include/functions_login.php";
+include "../include/classes/functions_login.php";
 $_SESSION['backpage']="member_listing.php";
 global $dbc;
 
@@ -194,9 +194,9 @@ $rows = $variables['rows'];
 			<table width="99%" height="60">
       			<tr>
         		  <td width="33%" valign="middle" class="heading">
-				    Member Name: <input type="text" name="s_member_name" value="<?php if(isset($_GET["smn"])) echo $_GET['smn']?>" class="inptbox" size="30"  />
+				    Member Name: <input type="text" name="s_member_name" value="<?=SetFromGet("smn")?>" class="inptbox" size="30"  />
             &nbsp;&nbsp; Member Email:
-            <input type="text" name="s_member_email" value="<?php if(isset($_GET["sme"]))echo $_GET['sme']?>" class="inptbox" size="40"  />&nbsp;&nbsp;
+            <input type="text" name="s_member_email" value="<?=SetFromGet("sme")?>" class="inptbox" size="40"  />&nbsp;&nbsp;
 			Status:
 			<select name="s_member_status">
 			  <option <?php if(isset($_GET["status"]) && $_GET['status']=="")echo "Selected";?> value="">Ignore</option>
@@ -240,12 +240,12 @@ $rows = $variables['rows'];
 			  <td>
 				<table width="100%" border="1" cellpadding="4" cellspacing="0" bordercolor="#CCD5E6" style="border-collapse :collapse" align="center">
 					<tr>
-					  <td width="8%" align="left" class="heading" ><a href="member_listing.php?smn=<?php echo $_GET["smn"]?>&sme=<?php echo $_GET["sme"]?>&ord=<?php echo $ord_next_name?>&member_active=<?php echo $active_member?>"  class="link3">Member Name</a>
+					  <td width="8%" align="left" class="heading" ><a href="member_listing.php?smn=<?=SetFromGet("smn")?>&sme=<?=SetFromGet("sme")?>&ord=<?=$ord_next_name?>&member_active=<?=$active_member?>"  class="link3">Member Name</a>
 					  <?php
 						if( isset($_GET["ord"]) && ( $_GET["ord"]==1 || $_GET["ord"]==2))
 						{
 					  ?>
-							&nbsp;	<a href="member_listing.php?smn=<?php if(isset($_GET["smn"])) echo $_GET["smn"]?>&sme=<?php if(isset($_GET["sme"])) echo $_GET["sme"]?>&ord=<?php echo $ord_next_name?>&member_active=<?php echo $active_member?>" class="link2"><img src="images/<?php echo $img_name?>.gif" width="12" height="11" alt="^" border="0"></a>
+							&nbsp;	<a href="member_listing.php?smn=<?=SetFromGet("smn")?>&sme=<?=SetFromGet("sme")?>&ord=<?=$ord_next_name?>&member_active=<?=$active_member?>" class="link2"><img src="images/<?=$img_name?>.gif" width="12" height="11" alt="^" border="0"></a>
 					  <?php
 						}
 					  ?></td>
@@ -253,12 +253,12 @@ $rows = $variables['rows'];
 					  <td width="7%" align="left" class="heading">Suburb</a></td>
 					  <td width="5%" align="center" class="heading">PCode</a></td>
 					  <td width="8%" align="left" class="heading">Phone</a></td>
-					  <td width="20%" align="left" class="heading" ><a href="member_listing.php?smn=<?php echo $_GET["smn"]?>&sme=<?php echo $_GET["sme"]?>&ord=<?php echo $ord_next_email?>&member_active=<?php echo $active_member?>"  class="link3">Email Address</a>
+					  <td width="20%" align="left" class="heading" ><a href="member_listing.php?smn=<?=SetFromGet("smn")?>&sme=<?=SetFromGet("sme")?>&ord=<?=$ord_next_email?>&member_active=<?=$active_member?>"  class="link3">Email Address</a>
 					  <?php
 					  if( isset($_GET["ord"]) && ($_GET["ord"]==3 || $_GET["ord"]==4))
 					  {
 					  ?>
-							&nbsp;<a href="member_listing.php?smn=<?php echo $_GET["smn"]?>&sme=<?php echo $_GET["sme"]?>&ord=<?php echo $ord_next_email?>&member_active=<?php echo $active_member?>" class="link2"><img src="images/<?php echo $img_name?>.gif" width="12" height="11" alt="^" border="0"></a>
+							&nbsp;<a href="member_listing.php?smn=<?=SetFromGet("smn")?>&sme=<?=SetFromGet("sme")?>&ord=<?=$ord_next_email?>&member_active=<?=$active_member?>" class="link2"><img src="images/<?=$img_name?>.gif" width="12" height="11" alt="^" border="0"></a>
 					  <?php
 					  }
 					  ?>
@@ -286,23 +286,23 @@ $rows = $variables['rows'];
 										$color="bgc";
 									?>
 							<tr class="<?php echo $color?>">
-								<td align="left" style="padding-left:2px;"> <a name = "<?php echo $row["member_id"]?>"></a>
-								  <a href="add_member.php?mode=edit&id=<?php echo $row["member_id"]?>" title="Edit <?php echo show_text($row["member_name"])?>" class="link2"><?php echo show_text($row["member_name"])?></a>
+								<td align="left" style="padding-left:2px;"> <a name = "<?=$row["member_id"]?>"></a>
+								  <a href="add_member.php?mode=edit&id=<?=$row["member_id"]?>" title="Edit <?=show_text($row["member_name"])?>" class="link2"><?=show_text($row["member_name"])?></a>
 								</td>
 								<td align="left" style="padding-left:2px;">
-								  <?php echo show_text($row["member_address"])?>
+								  <?=show_text($row["member_address"])?>
 								</td>
 								<td align="left" style="padding-left:2px;">
-								  <?php echo show_text($row["member_suburb"])?>
+								  <?=show_text($row["member_suburb"])?>
 								</td>
 								<td align="center" style="padding-left:2px;">
-								  <?php echo show_text($row["member_postcode"])?>
+								  <?=show_text($row["member_postcode"])?>
 								</td>
 								<td align="left" style="padding-left:2px;">
-								  <?php echo show_text($row["member_telephone"])?>
+								  <?=show_text($row["member_telephone"])?>
 								</td>
 								<td align="left" style="padding-left:2px;">
-									<?php echo show_text($row["member_email"])?>
+									<?=show_text($row["member_email"])?>
 								</td>
 								<td align="center">
 								<?php
@@ -317,7 +317,7 @@ $rows = $variables['rows'];
 									if($row["member_status"]==0)
 									{
 									?>
-										<a href="approve_membership.php?id=<?php echo $row["member_id"]?>" title="Approve Membership" class="link2">Approve</a>
+										<a href="approve_membership.php?id=<?=$row["member_id"]?>" title="Approve Membership" class="link2">Approve</a>
 									<?php
 									}
 								}
@@ -327,10 +327,10 @@ $rows = $variables['rows'];
 								</td>
 								<td align="center">
 									
-									<input name="delete[]" type="checkbox" value="<?php echo $row["member_id"]?>" />
+									<input name="delete[]" type="checkbox" value="<?=$row["member_id"]?>" />
 								</td>
 								<td align="center" class="header">
-								<input type="hidden" name="id[]" value="<?php echo $row['member_id']?>" />
+								<input type="hidden" name="id[]" value="<?=$row['member_id']?>" />
 								 <select name="status[]" class="dropdown">
 								  <option value="0" <?php if($row["status"]==0) echo "Selected";?>>Employee</option>
 								  <option value="1" <?php if($row["status"]==1) echo "Selected";?>>Associate</option>
@@ -338,10 +338,10 @@ $rows = $variables['rows'];
 								 </select>
 								</td>
 								<td align="center" class="header">
-								 <input type="text" name="pay[]" value="<?php echo $row['payment_amt']?>" class="inptbox" size="10" />
+								 <input type="text" name="pay[]" value="<?=$row['payment_amt']?>" class="inptbox" size="10" />
 								</td>
 								<td align="center" class="header">
-								 <input type="text" name="current_to[]" value="<?php echo $row['current_to']?>" class="inptbox" size="10" />
+								 <input type="text" name="current_to[]" value="<?=$row['current_to']?>" class="inptbox" size="10" />
 								</td>
 								
 								<td align="center">

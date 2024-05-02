@@ -197,7 +197,7 @@ $qrystringord .= "&page=$page";
 
 $qstringall .= "&page=$page";
 ?>
-    <script language="javascript" src="../scripts/cal2.js">
+    <script language="javascript" src="scripts/cal2.js">
         /*
 
         Xin's Popup calendar script-  Xin Yang (http://www.yxscripts.com/)
@@ -209,7 +209,7 @@ $qstringall .= "&page=$page";
         */
     </script>
 
-    <script language="javascript" src="../scripts/cal_conf2.js"></script>
+    <script language="javascript" src="scripts/cal_conf2.js"></script>
 
     <script LANGUAGE="JavaScript">
 
@@ -298,7 +298,7 @@ $qstringall .= "&page=$page";
 
                                 Check-In-Date: <input type="text" name="check_in_date" value="<?php if(isset($_GET['cdate']))echo $_GET['cdate']?>" class="inptbox" size="20" />
 
-                                <a href="javascript:showCal('Calendar1')"><img src="../images/calendar.png" align="absmiddle" alt="Select Check-in-date" border="0"></a>&nbsp;
+                                <a href="javascript:showCal('Calendar1')"><img src="images/calendar.png" align="absmiddle" alt="Select Check-in-date" border="0"></a>&nbsp;
 
                                 Status:
                                 <select name="status">

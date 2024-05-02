@@ -121,6 +121,14 @@ function SetFromPost($variableName) : string
     }
     return '';
 }
+function SetFromGet($variableName) : string
+{
+    if(isset($_GET[$variableName]) && $_GET[$variableName]!='')
+    {
+        return $_GET[$variableName];
+    }
+    return '';
+}
 function DisplayPost(string $variableName): void
 {
     echo  SetFromPost($variableName);

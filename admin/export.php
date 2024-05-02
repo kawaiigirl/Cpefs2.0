@@ -56,7 +56,7 @@ if(isset($_POST['submit']))
 			 <td width="63%" align="center">
 			  <input type="text" name="fdate" id="fdate" value="<?php if(isset($_POST['fdate'])) echo $_POST['fdate']?>" class="inptbox" size="12" />
 			  <a href="javascript:popUpCalendar(document.getElementById('fdate'),document.getElementById('fdate'),'yyyy-mm-dd');">
-			   <img src="../images/calendar.png" align="absmiddle" alt="From Date" border="0">
+			   <img src="images/calendar.png" align="absmiddle" alt="From Date" border="0">
 			  </a>
 			 </td>
 			</tr>
@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
 			 <td align="center">
 			  <input type="text" name="tdate" id="tdate" value="<?php if(isset($_POST['tdate'])) echo $_POST['tdate']?>" class="inptbox" size="12" />
 			  <a href="javascript:popUpCalendar(document.getElementById('tdate'),document.getElementById('tdate'),'yyyy-mm-dd');">
-			   <img src="../images/calendar.png" align="absmiddle" alt="From Date" border="0">
+			   <img src="images/calendar.png" align="absmiddle" alt="To Date" border="0">
 			  </a>
 			 </td>
 			</tr>

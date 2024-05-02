@@ -4,18 +4,21 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 ini_set('post_max_size', '100M');
 ini_set('upload_max_filesize', '100M');
-include_once "classes/class_DBC.php";
-include_once "dbconnect.php";
 
-include_once "commonFunction.php";
+include_once "../include/dbconnect.php";
 
-include "functions_booking.php";
-include "functions_units.php";
+include_once "../include/commonFunction.php";
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+require '../include/PHPMailer/Exception.php';
+require '../include/PHPMailer/PHPMailer.php';
+require '../include/PHPMailer/SMTP.php';
+include "../include/functions_booking.php";
+include "../include/functions_units.php";
 
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
 
+
+include_once "../include/validator.php";
 //todo::fix this mess
 
 
@@ -29,7 +32,7 @@ function pagination($targetPage, $query_string, $total_pages, $page): void
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.
 	$prev = $page - 1;							//previous page is page - 1
 	$next = $page + 1;							//next page is page + 1
-	//$lastPage = ceil($total_pages/$limit);		//lastpage is = total pages / items per page, rounded up.
+	//$lastPage = ceil($total_pages/$limit);		//$lastPage is = total pages / items per page, rounded up.
 	$lastPage = $total_pages;
 	$lpm1 = $lastPage - 1;						//last page minus 1
 	
@@ -73,7 +76,7 @@ function pagination($targetPage, $query_string, $total_pages, $page): void
 				}
 				$pagination.= "...";
 				$pagination.= "<a href=\"$targetPage?page=$lpm1$query_string\">$lpm1</a>";
-				$pagination.= "<a href=\"$targetPage?page=$lastPage$query_string\">$lastpage</a>";
+				$pagination.= "<a href=\"$targetPage?page=$lastPage$query_string\">$lastPage</a>";
 			}
 			//in middle; hide some front and some back
 			elseif($lastPage - ($adjacents * 2) > $page && $page > ($adjacents * 2))

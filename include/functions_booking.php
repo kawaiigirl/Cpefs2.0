@@ -1,10 +1,6 @@
 <?php //booking functions
-
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
-require 'include/PHPMailer/Exception.php';
-require 'include/PHPMailer/PHPMailer.php';
-require 'include/PHPMailer/SMTP.php';
 function makePayment($bookingid,$paymentmethod,$amount,$comment): void
 {
     global $dbc;

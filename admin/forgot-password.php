@@ -1,7 +1,7 @@
 <?php
 include "../include/common.php";
 const PAGE_TITLE = "Admin Forgot Password";
-const incPATH = "../inc/";
+const incPATH = "../include/";
 const TYPE ="admin";
 include "../include/classes/functions_login.php";
 include "include/admin_header_no_menu.php";

@@ -157,14 +157,14 @@ $qryParamsRefs = $variables['paramsRefs'];
 $qrystringord .= "&page=$page";
 $qstringall .= "&page=$page";
 ?>
-<script language="javascript" src="../scripts/cal2.js">
+<script language="javascript" src="scripts/cal2.js">
 /*
 Xin's Popup calendar script-  Xin Yang (http://www.yxscripts.com/)
 Script featured on/available at http://www.dynamicdrive.com/
 This notice must stay intact for use
 */
 </script>
-<script language="javascript" src="../scripts/cal_conf2.js"></script>
+<script language="javascript" src="scripts/cal_conf2.js"></script>
 <table width="98%" height="350" cellpadding="0"  cellspacing="0" border="0">
 	<tr>
    		<td colspan="3">
@@ -218,7 +218,7 @@ This notice must stay intact for use
 				  </select>&nbsp;
 					Member Name: <input type="text" name="mem" value="<?php if(isset($_GET['mem'])) echo $_GET['mem']?>" class="inptbox" size="25" />
 					Check-In-Date: <input type="text" name="check_in_date" value="<?php if(isset($_GET['cdate']))echo $_GET['cdate']?>" class="inptbox" size="20" />
-					<a href="javascript:showCal('Calendar1')"><img src="../images/calendar.png" align="absmiddle" alt="Select Check-in-date" border="0"></a>&nbsp;
+					<a href="javascript:showCal('Calendar1')"><img src="images/calendar.png" align="absmiddle" alt="Select Check-in-date" border="0"></a>&nbsp;
 					Status:
 					<select name="status">
 					  <option <?php if(!isset($_GET['status']) || $_GET['status']=="")echo "Selected";?> value="">Please select</option>

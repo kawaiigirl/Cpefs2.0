@@ -1,6 +1,5 @@
 <?php
 
-include_once "include/validator.php";
 /**
  * @param $email
  * @param $type
