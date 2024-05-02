@@ -1,8 +1,8 @@
 <?php
-const incPATH = "../inc/";
-include "../inc/common.php";
+const incPATH = "../include/";
+include "../include/common.php";
 const PAGE_TITLE = "Admin Password Expired";
-include "../inc/functions_login.php";
+include "../include/classes/functions_login.php";
 include "include/admin_header_no_menu.php";
 
 ?>

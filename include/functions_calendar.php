@@ -1,5 +1,5 @@
 <?php
-function DisplayDate($date)
+function DisplayDate($date): string
 {
 
     if($date != "")

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-include_once "../inc/common.php";
+include_once "../include/common.php";
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

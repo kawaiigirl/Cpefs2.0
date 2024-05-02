@@ -90,28 +90,28 @@ if(count($_POST)>0 || (isset($_GET['unit']) && $_GET['unit']!="") ||  (isset($_G
         $qrystringord="&unit=$_GET[unit]";
         $sub=" And cpefs_booking.unit_id=?";
         $qryParamTypes .="i";
-        array_push($qryParams,$_GET["unit"]);
+        $qryParams[] = $_GET["unit"];
     }
     if(isset($_GET['mem']) && $_GET['mem']!="")
     {
         $qrystringord .="&mem=$_GET[mem]";
         $sub .=" And cpefs_members.member_name Like ?";
         $qryParamTypes .="s";
-        array_push($qryParams,"%".$_GET["mem"]."%");
+        $qryParams[] = "%" . $_GET["mem"] . "%";
     }
     if(isset($_GET['cdate']) && $_GET['cdate']!="")
     {
         $qrystringord .="&cdate=$_GET[cdate]";
         $sub .=" And check_in_date = ?";
         $qryParamTypes .="s";
-        array_push($qryParams,$_GET["cdate"]);
+        $qryParams[] = $_GET["cdate"];
     }
     if(isset($_GET['status']) && $_GET['status']!="")
     {
         $qrystringord .="&status=$_GET[status]";
         $sub .=" And approve = ?";
         $qryParamTypes .="i";
-        array_push($qryParams,$_GET["status"]);
+        $qryParams[] = $_GET["status"];
     }
 }
 

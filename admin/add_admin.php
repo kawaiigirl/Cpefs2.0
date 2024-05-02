@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 
-include "../inc/functions_login.php";
+include "../include/classes/functions_login.php";
 include("redirect_to_adminlogin.php");
 global $dbc;
 $msgName = $msgEmail = $msgPassword = $msgPassword2 = "";
@@ -29,7 +29,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Submit")
     }
     else
     {
-        include "../inc/set_error_msg.php";
+        include "../include/set_error_msg.php";
     }
 }
 if(count($_POST)<=0 && isset($_GET['id']) && $_GET['id']!="")

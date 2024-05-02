@@ -25,7 +25,7 @@ $f=0;
 <table width="350"  cellspacing="0" cellpadding="0" border="0" align="center">
   <tr>
     <td class="error"> 
-      <?
+      <?php
 		  if(!$errors=="")
 			{
 				  foreach($errors as $error)

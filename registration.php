@@ -1,9 +1,9 @@
 <?php
 use ReCaptcha\ReCaptcha;
-include "inc/common.php";
+include "include/common.php";
 $title="CPEFS Holiday - Member Registration";
-include "inc/header.php"; 
-require("inc/reCaptcha/autoload.php");
+include "include/header.php";
+require("include/reCaptcha/autoload.php");
 
 $msgFirstname = $msgLastname = $msgAddress = $msgSuburb = $msgPostcode = $msgPhone = $msgEmail = $msgPassword = $msgPassword2 = $success = $msgRecaptcha = "";
 if(isset($_POST['Submit']))

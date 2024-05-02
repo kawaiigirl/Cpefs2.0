@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 include("redirect_to_adminlogin.php");
-require_once "../inc/validator.php";
+require_once "../include/validator.php";
 //todo send change password email
 $f=0;
 $validator=new Validator;
@@ -142,10 +142,7 @@ if($_GET['id']!="")
 <?php
 	switch ($f) 
 	{
-		case 1:
-			set_focus("frm.old_password");
-			break;
-		case 2:
+        case 2:
 			set_focus("frm.new_password");
 			break;
 		case 3:

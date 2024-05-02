@@ -1,8 +1,8 @@
 <?php
 session_start();
-const incPATH = "../inc/";
-include_once "../inc/common.php";
-include_once "../inc/class_Booking.php";
+const incPATH = "../include/";
+include_once "../include/common.php";
+include_once "../include/class_Booking.php";
 include_once "redirect_to_adminlogin.php";
 header("Content-type: text/plain");
 header("Content-Disposition: attachment; filename=member_emails.csv");

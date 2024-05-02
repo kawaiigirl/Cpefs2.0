@@ -17,7 +17,7 @@ if(isset($_POST['Submit']))
         $success = "<span style='color:red'>&nbsp;Your account has been successfully updated</span>";
     }
     else {
-        include "inc/set_error_msg.php";
+        include "include/set_error_msg.php";
     }
 }
 else

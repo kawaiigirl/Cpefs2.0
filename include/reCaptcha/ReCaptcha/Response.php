@@ -57,7 +57,7 @@ class Response
             return new Response(false, array('invalid-json'));
         }
 
-        if (isset($responseData['success']) && $responseData['success'] == true) {
+        if (isset($responseData['success']) && $responseData['success']) {
             return new Response(true);
         }
 

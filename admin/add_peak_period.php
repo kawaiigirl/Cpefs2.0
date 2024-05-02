@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
-include_once "../inc/common.php";
-include "../inc/calendar.php";
+include_once "../include/common.php";
+include "../include/calendar.php";
 global $dbc;
 $f=0;
 $errors= [];

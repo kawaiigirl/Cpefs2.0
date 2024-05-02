@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 include "redirect_to_adminlogin.php";
-include "../inc/functions_login.php";
+include "../include/classes/functions_login.php";
 global $dbc;
 $msgFirstname = $msgLastname = $msgAddress = $msgSuburb = $msgPostcode = $msgPhone = $msgEmail = $msgPassword = $msgConfirmPassword = "";
 
@@ -17,7 +17,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Submit")
         $passwordResult['errors'] = false;
         $result = validateMember($_POST['member_firstname'], $_POST['member_lastname'], $_POST['member_address'], $_POST['member_suburb'], $_POST['member_postcode'], $_POST['member_telephone'], $_POST['member_email'],$_GET['id']);
     }
-	if($result['errors'] != 1 && $passwordResult['errors'] == false)
+	if($result['errors'] != 1 && !$passwordResult['errors'])
 	{
         $name = $_POST['member_firstname'] ." ".$_POST['member_lastname'];
 		if(!isset($_GET['id']) || $_GET['id']=="")
@@ -34,7 +34,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Submit")
     }
 	else
     {
-        include "../inc/set_error_msg.php";
+        include "../include/set_error_msg.php";
     }
 }
 if(count($_POST)<=0 && isset($_GET['id']) && $_GET['id']!="")

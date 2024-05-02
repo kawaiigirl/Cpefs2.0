@@ -16,9 +16,9 @@ else
     $forgotPwdURL = SITE_URL."/forgot-password.php";
 }
 $res = $dbc->getSingleRow("SELECT * FROM cpefs_pwd_reset WHERE token=? and email=?",__LINE__,__FILE__,array("ss",&$token,&$email));
-if($res != false)
+if($res)
     $expDate = $res['expDate'];
-if ($res == false || $curDate > $expDate)
+if (!$res || $curDate > $expDate)
 {
     $error .= "<h3>Invalid Link</h3>
                     <p>The link is invalid/expired. Either you did not copy the correct link

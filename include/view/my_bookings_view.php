@@ -151,7 +151,7 @@ AddFooter_CloseMain();
         }
         else
         {
-            //loops through all the check boxes and finds the selected one
+            //loops through all the checkboxes and finds the selected one
             for (let i=0; i<selection.length; i++)
                 if (selection[i].checked === true)
                 {

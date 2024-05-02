@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'include/PHPMailer/Exception.php';
 require 'include/PHPMailer/PHPMailer.php';
 require 'include/PHPMailer/SMTP.php';
-function makePayment($bookingid,$paymentmethod,$amount,$comment)
+function makePayment($bookingid,$paymentmethod,$amount,$comment): void
 {
     global $dbc;
 	$_amount = str_replace(",","",$amount);

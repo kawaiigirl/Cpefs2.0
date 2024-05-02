@@ -1,9 +1,9 @@
 <?php 
 include "include/admin_header.php";
-include_once "../inc/calendar.php";
-include_once "../inc/common.php";
+include_once "../include/calendar.php";
+include_once "../include/common.php";
 include_once "redirect_to_adminlogin.php";
-include_once "../inc/validator.php";
+include_once "../include/validator.php";
 $_SESSION['backpage']="booking_listing.php";
 global $dbc;
 $f=0;
@@ -130,7 +130,7 @@ $row = $dbc->getSingleRow($qry2,__LINE__,__FILE__,array("i",&$_GET['id']));
 					</tr>
 					<tr>
 					<td colspan="12" align="center">
-							<i>Negative transactions are permitted. Comment is Optional (Eg. Add New Transaction: -100. Comment: Refund)</i>
+							<i>Negative transactions are permitted. Comment is Optional (E.g. Add New Transaction: -100. Comment: Refund)</i>
 					</td>
 					</tr>
 				</table>
@@ -187,7 +187,7 @@ $row = $dbc->getSingleRow($qry2,__LINE__,__FILE__,array("i",&$_GET['id']));
 				?>
 				  <tr> 
 					<td align="center" colspan="12" height="100" valign="middle" class="error" > 
-					  <b>No Payments Records!</b> </td>
+					  <b>No Payment Records!</b> </td>
 				  </tr>
 				<?php
 				}

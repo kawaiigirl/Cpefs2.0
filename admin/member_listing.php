@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 include_once "redirect_to_adminlogin.php";
-include "../inc/functions_login.php";
+include "../include/functions_login.php";
 $_SESSION['backpage']="member_listing.php";
 global $dbc;
 

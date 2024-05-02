@@ -1,6 +1,6 @@
 <?php
 include "include/admin_header.php";
-include_once "../inc/calendar.php";
+include_once "../include/calendar.php";
 include("redirect_to_adminlogin.php");
 
 global $dbc;

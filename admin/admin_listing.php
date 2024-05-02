@@ -33,13 +33,13 @@ elseif(count($_POST)>0 || isset($_GET['san']) || isset($_GET['sae']))
 	{
 		$sub=" and name like ?";
         $qryParamTypes .="s";
-        array_push($qryParams,"%".$_GET["san"]."%");
+        $qryParams[] = "%" . $_GET["san"] . "%";
 	}	
 	if(isset($_GET['sae']) && $_GET['sae']!="")
 	{
 		$sub .=" and email = ?";
         $qryParamTypes .="s";
-        array_push($qryParams,$_GET["sae"]);
+        $qryParams[] = $_GET["sae"];
 	}	
 	
 }

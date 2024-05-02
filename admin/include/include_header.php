@@ -1,4 +1,4 @@
 <?php
 session_start();
-include_once "../inc/common.php";
-include_once "../inc/class_Booking.php";
+include_once "../include/common.php";
+include_once "../include/classes/class_Booking.php";

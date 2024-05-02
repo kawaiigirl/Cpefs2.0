@@ -1,11 +1,11 @@
 <?php
-include "../inc/common.php";
+include "../include/common.php";
 const PAGE_TITLE = "Admin Forgot Password";
 const incPATH = "../inc/";
 const TYPE ="admin";
-include "../inc/functions_login.php";
+include "../include/classes/functions_login.php";
 include "include/admin_header_no_menu.php";
-include "../inc/forgot_password_body.php";
+include "../include/forgot_password_body.php";
 
 ?>
             </table>

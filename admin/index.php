@@ -1,8 +1,8 @@
 <?php
 session_start();
-const incPATH = "../inc/";
-include "../inc/common.php";
-include "../inc/functions_login.php";
+const incPATH = "../include/";
+include "../include/common.php";
+include "../include/functions_login.php";
 
 $errors = false;
 
@@ -11,19 +11,19 @@ if(isset($_POST['submit']) && $_POST['submit']=="Login")
 
     if($_POST['email']=="" || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
     {
-        $errors[]="Please Specify a valid Email Address";
+        $errors = ["Please Specify a valid Email Address"];
     }
     if($_POST['password']=="")
     {
-        $errors[]="Please Specify Password";
+        $errors=["Please Specify Password"];
     }
 
     if(!$errors)
     {
         $result = verifyAdminLogin($_POST['email'],$_POST['password']);
-       if($result['success'] != false)
+       if($result['success'])
        {
-           if($result['password_expired'] ==true)
+           if($result['password_expired'])
            {
                header("Location: password_expired.php");
            }
@@ -36,7 +36,7 @@ if(isset($_POST['submit']) && $_POST['submit']=="Login")
        }
        else
        {
-           $errors[] = "Incorrect Login! Wrong Username or Password";
+           $errors = ["Incorrect Login! Wrong Username or Password"];
        }
     }
 }

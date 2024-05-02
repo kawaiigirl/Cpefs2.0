@@ -1,4 +1,5 @@
 <?php
+
 require_once incPATH."validator.php";
 class Booking
 {
@@ -40,7 +41,7 @@ class Booking
     /**
      * Admin created Booking. Inserts booking into the database, automatically approves booking, then redirects back to booking_listing page with a display message depending on if it was a new booking or an edited booking
      */
-    public function addManualBooking($rate,$paid)
+    public function addManualBooking($rate, $paid): void
     {
         $this->insertBooking("Admin - Manual", $rate,$paid,1);
 
@@ -51,7 +52,7 @@ class Booking
     /**
      * creates insert/update query and insert/updates the database
      */
-    private function insertBooking(string $creator,$rate='',$paid=0, int $approve = 0)
+    private function insertBooking(string $creator,$rate='',$paid=0, int $approve = 0): void
     {
         global $dbc;
 
@@ -62,7 +63,7 @@ class Booking
         else
             $this->rate = $rate;
 
-        $duedate = $this->getDueDate();
+        $dueDate = $this->getDueDate();
 
         $invoice_number = Booking::getInvoiceNumber($this->unit_id,$this->check_in_date);
 
@@ -76,7 +77,7 @@ class Booking
         $qry .= ",approve=?,creator=?";
 
         $booking_date = date("Y-m-d H:i:s");
-        $dbc->insertPDO("Insert into cpefs_booking Set $qry, booking_date='$booking_date'",__LINE__,__FILE__,array( $this->member_id, $this->unit_id,$this->firstname,$this->lastname,$this->name,$this->email,$this->phone,$this->nights,$this->rate,$this->check_in_date, $duedate, $invoice_number, $this->is_peak,$approve,$creator));
+        $dbc->insertPDO("Insert into cpefs_booking Set $qry, booking_date='$booking_date'",__LINE__,__FILE__,array( $this->member_id, $this->unit_id,$this->firstname,$this->lastname,$this->name,$this->email,$this->phone,$this->nights,$this->rate,$this->check_in_date, $dueDate, $invoice_number, $this->is_peak,$approve,$creator));
 
         if($paid > 0)
         {
@@ -84,7 +85,7 @@ class Booking
             makePayment($dbc->getLastInsertID(),'Manual Booking',$this->paid,"");
         }
     }
-    public function updateBooking($id,$rate = null)
+    public function updateBooking($id,$rate = null): void
     {
         global $dbc;
 
@@ -350,7 +351,7 @@ class Booking
     {
         global $dbc;
 
-        //We don't check the last day, because they checkout in the morning. Thus -1
+        //We don't check the last day, because they check out in the morning. Thus -1
         $check_out_date = date('Y-m-d', strtotime($check_in_date. ' + '.($nights-1).'day'));
 
         /* //sql query with variables
@@ -383,7 +384,7 @@ class Booking
     /**
      * gets due date of payment
      */
-    public function getDueDate()
+    public function getDueDate(): string
     {
         /* Calculating the due date if Nights are more than 3 days */
         if($this->nights > 4)
@@ -474,34 +475,20 @@ class Booking
     private function isCorrectDay() :bool
     {
         $day = date("D", strtotime($this->check_in_date));
-        switch($this->nights)
+        $correctDay = match ($this->nights)
         {
-            case 3:
-                $correctDay ='Fri';
-                break;
-            case 4:
-            case 7:
-            case 14:
-            default:
-                $correctDay = 'Mon';
-                break;
-        }
+            3 => 'Fri',
+            default => 'Mon',
+        };
         return $correctDay == $day;
     }
     private function isWithinTimeframeAllowed():bool
     {
-        switch($this->nights)
+        $addTime = match ($this->nights)
         {
-            case 3:
-            case 4:
-                $addTime = '+1 month';
-                break;
-            case 7:
-            case 14:
-            default:
-                $addTime = '+12 month';
-                break;
-        }
+            3, 4 => '+1 month',
+            default => '+12 month',
+        };
         $date = new DateTime('now');
         $date->modify($addTime); // or you can use '-90 day' for deduct
         $date = $date->format('Y/m/d');

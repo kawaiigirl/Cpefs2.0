@@ -1,7 +1,7 @@
 <?php
 include "include/admin_header.php";
 include("redirect_to_adminlogin.php");
-require_once "../inc/validator.php";
+require_once "../include/validator.php";
 
 $f=0;
 $validator=new Validator;

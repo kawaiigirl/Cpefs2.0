@@ -1,7 +1,7 @@
 <?php
-const incPath = '../inc/';
+const incPath = '../include/';
 session_start();
-include_once "../inc/common.php";
+include_once "../include/common.php";
 include_once "redirect_to_adminlogin.php";
 global $dbc;
 $path = "";

@@ -4,6 +4,7 @@
 AddGenericHead(""," <link rel='stylesheet' href='include/view/lightbox.css'>");
 
 AddHeader_StartMain(GetNavLinks());
+global$booking;
 ?>
 <div class="row">
     <h1 class="header"><button class="prev-unit" onClick="window.location.href='unit_details.php?id=<?=getPreviousUnit($_GET['id'])?>'">&#10094;</button>

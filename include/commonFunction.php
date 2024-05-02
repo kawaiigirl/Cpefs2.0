@@ -72,7 +72,7 @@ function databaseDump(): string
 return $dump;
 }
 
-function set_focus($obj)
+function set_focus($obj): void
 {
     if($obj !='')
     {
@@ -121,13 +121,13 @@ function SetFromPost($variableName) : string
     }
     return '';
 }
-function DisplayPost(string $variableName)
+function DisplayPost(string $variableName): void
 {
     echo  SetFromPost($variableName);
 }
-function DisplayPostOrGet(string $variableName, $default = "")
+function DisplayPostOrGet(string $variableName): void
 {
-    echo SetFromPostOrGet($variableName, $default);
+    echo SetFromPostOrGet($variableName);
 }
 function get_admin_receive_email_id()
 {
@@ -170,16 +170,16 @@ function getMonth($val): string
 	return "Invalid Month";
 }
 
-function getFirstName($name)
+function getFirstName($name): string
 {
 	return substr($name,0,strpos($name," "));
 }
 
-function getEndDate($cdate,$duration)
+function getEndDate($cdate,$duration): string
 {
 	$d=date("d",strtotime($cdate));
 	$m=date("m",strtotime($cdate));
 	$y=date("Y",strtotime($cdate));
 	
-	return date("d M Y",mktime(0,0,0,$m,$d+$duration,$y));
+	return date("d M Y",mktime(0,0,0,$m,(int)$d+(int)$duration,$y));
 }

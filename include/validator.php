@@ -55,8 +55,8 @@ class Validator
 
 	// Return a string containing a list of errors found,
 	// Seperated by a given deliminator
-	function listErrors()
-	{
+	function listErrors(): void
+    {
 	?>
 		<table width="100%" cellspacing="4" cellpadding="0" border="0" align="center" class="error">
 		  <tr>
@@ -73,8 +73,8 @@ class Validator
 	<?php
 	}
 	// Manually add something to the list of errors
-	function addError($description)
-	{
+	function addError($description): void
+    {
 		$this->errors[] = $description;
 	}	
 }

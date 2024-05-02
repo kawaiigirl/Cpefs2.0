@@ -14,7 +14,7 @@ class DBC
 	}
 	//cpefs branch
 
-    public function openPDO()
+    public function openPDO(): void
     {
         try {
             $dsn      = "mysql:dbname=".DB_NAME."; host=".DB_HOST;
@@ -45,11 +45,11 @@ class DBC
         }
         return $refs;
     }
-    public function getInsertID()
+    public function getInsertID(): int|string
     {
         return $this->mysqli->insert_id;
     }
-    private function mysqliLogError($mysqli,$qry,$msg,$line,$file)
+    private function mysqliLogError($mysqli,$qry,$msg,$line,$file): void
     {
         echo "<p style='color:red;'>There has been a database error, please contact $this->errorContact </p>";
         $this->LogError("SQL: $qry Error Number:  $mysqli->errno Msg: $msg File: $file Line: $line ");
@@ -64,7 +64,7 @@ class DBC
         }
     }
 /////reports mysqli errors
-    private function mysqliErrorCheck($res,$qry,$line,$file)
+    private function mysqliErrorCheck($res,$qry,$line,$file): void
     {
         if (!$res )
         {
@@ -72,7 +72,7 @@ class DBC
             echo "<p style='color:red;border:solid black 1px;background:white;'>There has been a database error please contact $this->errorContact</p><br/>";
         }
     }
-    public function getNumRows($qry,$line,$file,$parameters=null)
+    public function getNumRows($qry,$line,$file,$parameters=null): int|string
     {
         $result=$this->preparedQuery($qry,$parameters,$line,$file);
         if(is_a($result, 'mysqli_result')) {
@@ -107,7 +107,7 @@ class DBC
         else
             return false;
     }
-    private function LogError($errorMessage)
+    private function LogError($errorMessage): void
     {
         $qry = "INSERT INTO $this->errorlogTable SET $this->errorlogTable.error_message = ?,$this->errorlogTable.date=now()";
         $parameters = array("s",& $errorMessage);
@@ -176,7 +176,7 @@ class DBC
         $res = $this->getResultPDO($qry,$line,$file,$parameters);
         return $res->fetch();
     }
-    public function getResultPDO($qry,$line,$file,$parameters = null)
+    public function getResultPDO($qry,$line,$file,$parameters = null): bool|PDOStatement
     {
         return $this->preparedPDOQuery($qry, $line, $file, $parameters);
     }
@@ -188,7 +188,7 @@ class DBC
         else
             return array();
     }
-    private function preparedPDOQuery($qry, $line, $file, $parameters)
+    private function preparedPDOQuery($qry, $line, $file, $parameters): bool|PDOStatement
     {
         if ($parameters != null)
         {
@@ -204,14 +204,14 @@ class DBC
         }
         return $this->queryPDO($qry,$line,$file);
     }
-    private function queryPDO($qry,$line,$file)
+    private function queryPDO($qry,$line,$file): bool|PDOStatement
     {
         $res = $this->pdo->query($qry);
         if(!$res)
             $this->logErrorPDO($qry,$line,$file);
         return $res;
     }
-    private function logErrorPDO($qry,$line,$file,$parameters = null)
+    private function logErrorPDO($qry,$line,$file,$parameters = null): void
     {
         echo "<p style='color:red;border:solid black 1px;background:white;'>There has been a database error please contact $this->errorContact</p><br/>";
         $msg = implode(":",$this->pdo->errorInfo());
@@ -251,7 +251,7 @@ class DBC
             return $this->query($qry, $line, $file);
     }
 
-    private function preparedQuery($qry,$parameters,$line,$file)
+    private function preparedQuery($qry,$parameters,$line,$file): mysqli_result|bool|mysqli_stmt
     {
         if ($parameters != null)
         {
@@ -284,7 +284,7 @@ class DBC
         return $this->query($qry,$line,$file);
     }
 /////executes mysqli query with error checking etc.
-    private function query($qry,$line,$file)
+    private function query($qry,$line,$file): mysqli_result|bool
     {
         $res = $this->mysqli->query($qry);
         $this->mysqliErrorCheck($res,$qry,$line,$file);

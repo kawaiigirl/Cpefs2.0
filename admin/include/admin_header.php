@@ -1,5 +1,5 @@
 <?php
-const incPATH = "../inc/";
+const incPATH = "../include/";
 include_once "include/include_header.php";
 include "include/top.php";
 

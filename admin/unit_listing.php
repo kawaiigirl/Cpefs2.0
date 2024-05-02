@@ -36,14 +36,14 @@ elseif(count($_POST) > 0 || isset($_GET['sun']) || isset($_GET['sue']))
         $sun = $_GET['sun'];
         $sub = " and unit_name like ?";
         $qryParamTypes .= "s";
-        array_push($qryParams, "%" . $sun . "%");
+        $qryParams[] = "%" . $sun . "%";
     }
     if($_GET['sue'] != "")
     {
         $sue = $_GET['sue'];
         $sub .= " and manager_email = ?";
         $qryParamTypes .= "s";
-        array_push($qryParams, $sue);
+        $qryParams[] = $sue;
     }
 }
 $ord_next_name = 1;
