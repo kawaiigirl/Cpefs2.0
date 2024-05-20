@@ -69,6 +69,11 @@ label,.leftData {
     width: 25%;
     margin-top: 6px;
 }
+.leftData
+{
+    margin-top: 6px;
+    padding: 12px 20px;
+}
 
 input,select,.rightData,textarea,.nonInteractiveInput{
     float: right;
@@ -90,7 +95,12 @@ input,select,.rightData,textarea,.nonInteractiveInput{
     font-size: 13px;
     color: #4f4f4f;;
 }
-
+.bookingDetailsLabel
+{
+    padding: 5px 10px;
+    width: 45%;
+    text-align: left;
+}
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
     label,.leftData,.rightData,select, input,button, input[type=submit],input[type=text],input[type=email],input[type=password],.nonInteractiveInput {
