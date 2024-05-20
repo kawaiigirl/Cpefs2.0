@@ -6,7 +6,7 @@ AddGenericHead();
 AddHeader_StartMain(GetNavLinks());
 ?>
 <div class="row">
-    <div class="midColumn"><h1 class="header">Login</h1>
+    <div class="midColumn smallMidColumn"><h1 class="header">Login</h1>
         <div class="card clearfix">
             <form method="post">
                 <div class="row"><label for="email">Email</label>

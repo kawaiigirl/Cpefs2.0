@@ -5,10 +5,67 @@ AddGenericHead();
 
 AddHeader_StartMain(GetNavLinks());
 ?>
+<style>
+    * {box-sizing: border-box;}
+    body {font-family: Verdana, sans-serif;}
+    .mySlides {display: none;}
+    img {vertical-align: middle;}
 
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+    /* Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0,0,0,0.55);
+    }
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+    }
+</style>
 <div class="row"><h1 class="header">Units</h1>
     <div class="midColumn">
 <div class="card">
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="include/view/images/units/beachhaven.jpg" style="width:100%" alt="Beach Haven">
+            <div class="text">Beach Haven</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="include/view/images/units/cocobay.jpg" style="width:100%" alt="Coco Bay">
+            <div class="text">Coco Bay</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="include/view/images/units/focus.jpg" style="width:100%" alt="Focus">
+            <div class="text">Focus</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="include/view/images/units/peninsular.jpg" style="width:100%" alt="Peninsula">
+            <div class="text">Peninsula</div>
+        </div>
+
+    </div>
     <table style="width: 100%; border-collapse: collapse">
         <tr>
             <th></th>
@@ -52,4 +109,23 @@ AddHeader_StartMain(GetNavLinks());
 <?php
 AddFooter_CloseMain();
 ?>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}
+
+        slides[slideIndex-1].style.display = "block";
+
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
 </html>

@@ -143,6 +143,17 @@ a.book-now:hover{
     text-align: center;
 
 }
+.unit-calendar table{
+    border-collapse: collapse;
+}
+.unit-calendar tr{
+    height:35px;
+}
+.unit-calendar td {
+    border:solid #4f4f4f 1px;
+    border-collapse: collapse;
+    padding:0;
+}
 
 @media (max-width: 600px) {
     .nav-links {

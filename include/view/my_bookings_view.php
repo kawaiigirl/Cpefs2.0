@@ -6,6 +6,7 @@ AddGenericHead();
 AddHeader_StartMain(GetNavLinks());
 ?>
 <div class="row"><h1 class="header">My Bookings</h1>
+    <div class="singleColumn">
     <div class="card">
 		<p><strong>Payment options</strong></p>
 		<p>All payments can be made  by <span class="style1">direct deposit (preferred method)</span> or credit card.<br />
@@ -99,6 +100,7 @@ AddHeader_StartMain(GetNavLinks());
 		</tr>
 		</table>
 	</form>
+    </div>
     </div>
 </div>
 <?php

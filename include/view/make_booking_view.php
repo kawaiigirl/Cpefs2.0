@@ -5,7 +5,8 @@ AddGenericHead(""," <link rel='stylesheet' href='include/view/datepicker.css'>")
 
 AddHeader_StartMain(GetNavLinks());
 ?>
-<div class="row">
+<form name="form2" method="post" action="">
+    <div class="row">
     <?php
     if ($success != "")
     {
@@ -15,9 +16,9 @@ AddHeader_StartMain(GetNavLinks());
     {
     ?>
     <h1 class="header">Make Booking</h1>
-    <div class="midColumn">
-        <div class="card clearfix">
-            <form name="form2" method="post" action="">
+
+        <div class="leftColumn">
+            <div class="card clearfix">
                 <div class="row"><label for="unit_id"> Unit</label>
                     <select name="unit_id" id="unit_id">
                         <?php getUnitsSelectOptions(setFromPostOrGet('unit_id')); ?>
@@ -44,19 +45,33 @@ AddHeader_StartMain(GetNavLinks());
                         <option <?php if (IsPostSetAndEquals("nights", "14")) echo "Selected"; ?> value="14">14 Nights (Mon-Mon) </option>
                     </select> <span class='error'><?php if (isset($errors['nights'])) echo $errors['nights']; ?></span>
                 </div>
-                <div class="row"><label for="check_in_date">Check In Date</label>
+            </div>
+        </div>
+        <div class="rightColumn">
+            <div class="card">
+                <div class="row">
+
                     <div class="calendar" id="calendar"></div>
-                    <input type="text" id="check_in_date" name="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>" >
-                    &nbsp;<span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
+                    <input type="hidden" id="check_in_date" name="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>">
                 </div>
-                <input type="checkbox" name="agree" id='agree' value="yes"> <label for="agree">I agree to the
-                    <a href="legals.php">Legal Terms </a></label><span class='error'><?php if (isset($errors['agree'])) echo $errors['agree']; ?></span>
-                <input type="submit" name="button" id="button" value="Submit">
-                <input type="reset" name="button2" id="button2" value="Clear">
-            </form>
+                <div class="row">
+                    <div class="leftData">Check-In-Date</div>
+                    <div class="nonInteractiveInput" id="check_in_date_div"><?php DisplayPost('check_in_date')?></div>
+                    <span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    <div class="row">
+            <div class="singleColumn">
+                <div class="card clearfix" style="margin-top: 0">
+                    <input type="checkbox" name="agree" id='agree' value="yes"> <label for="agree">I agree to the
+                        <a href="legals.php">Legal Terms </a></label><span class='error'><?php if (isset($errors['agree'])) echo $errors['agree']; ?></span>
+                    <input type="submit" name="button" id="button" value="Submit">
+                </div>
+            </div>
+    </div>
+</form>
 <?php
 }
 AddFooter_CloseMain();

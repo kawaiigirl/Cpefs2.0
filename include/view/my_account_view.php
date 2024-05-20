@@ -2,15 +2,16 @@
 <html lang="en">
 <?php
 AddGenericHead();
-
 AddHeader_StartMain(GetNavLinks());
 ?>
-<div class="row"><h1 class="header">My Account</h1>
+<div class="row">
+    <div class="smallMidColumn">
+        <h1 class="header">My Account</h1>
     <?php
     if ($success != "")
         echo '<div class="card">' . $success . '</div>';
     ?>
-    <div class="midColumn">
+
     <div class="card">
         <form name="form1" method="post" action="">
             <div class="row"><label for="member_firstname">First Name</label>

@@ -7,17 +7,11 @@
 main .container
 {
 padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     background-color: #d9d9d9;
 }
 /* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftColumn {
-    float: left;
-    width: 75%;
-    min-width: 800px;
 
-}
 .evenColumns{
     float:left;
     width: calc(50% - 20px);
@@ -29,12 +23,29 @@ padding-top: 10px;
     margin:0 auto;
     width: 75%;
 }
+.smallMidColumn
+{
+    margin:0 auto;
+    width: 50%;
+}
+.singleColumn
+{
+    margin:0 auto;
+    width: 100%;
+    padding: 0 10px 0;
+}
+/* Left column */
+.leftColumn {
+    float: left;
+    width: 50%;
+    min-width: 480px;
+    padding-left: 10px;
+}
 /* Right column */
 .rightColumn {
     float: left;
-    width: 25%;
-
-    padding-left: 20px;
+    width: 50%;
+    padding:0 10px;
 }
 /* Add a card effect for articles */
 .card {
@@ -59,7 +70,7 @@ padding-top: 10px;
 @media screen and (max-width: 1000px) {
     .leftColumn, .rightColumn,.evenColumns,.midColumn {
         width: 100%;
-        padding: 0;
+        padding: 10px;
         margin-left: 0;
         min-width: 100%;
     }

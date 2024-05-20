@@ -17,10 +17,10 @@ function renderCalendar(year, month) {
     calendarElement.innerHTML = `
       <div class="calendar-header">
        <span class="calendar-month"><strong>${monthNames[month - 1]} ${year}</strong></span>
-<button onclick="previousMonth()"><strong>&#8249;</strong></button><button onclick="nextMonth()"><strong>&#8250;</strong></button>
+<button class="prev-month" onclick="previousMonth()"><strong>&#8249;</strong></button><button class="next-month" onclick="nextMonth()"><strong>&#8250;</strong></button>
       </div>
       <div class="calendar-days">
-        ${dayNames.map(day => `<div class="calendar-day">${day}</div>`).join('')}
+        ${dayNames.map(day => `<div class="calendar-day no-pointer">${day}</div>`).join('')}
       </div>
     `;
 
@@ -33,6 +33,7 @@ function renderCalendar(year, month) {
     for (let i = 0; i < startingOffset; i++) {
         const blankDay = document.createElement('div');
         blankDay.classList.add('calendar-day');
+        blankDay.classList.add('no-pointer');
         daysElement.appendChild(blankDay);
     }
 
@@ -75,10 +76,13 @@ function updateInput() {
         inputField.value = selectedDate.toLocaleDateString("en-GB");
         let date = inputField.value.split('/');
         inputField.value = date[2] + '/' + date[1] + '/' + date[0];
+        document.getElementById('check_in_date_div').innerHTML =  date[0] + '/' + date[1] + '/' + date[2];
 
     } else {
         inputField.value = '';
+        document.getElementById('check_in_date_div').innerHTML = inputField.value;
     }
+
 }
 
 function previousMonth() {

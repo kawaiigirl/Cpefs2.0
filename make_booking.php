@@ -5,6 +5,7 @@ include "include/view/layout.php";
 const incPATH = "include/";
 include "include/classes/class_Booking.php";
 include "include/functions_booking.php";
+include "include/phpmailer/PHPMailer.php";
 global $dbc;
 
 

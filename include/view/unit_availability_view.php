@@ -8,15 +8,16 @@ AddHeader_StartMain(GetNavLinks());
 
 <div class="row">
     <h1 class="header">Unit Availability</h1>
-
-    <div class="card">
-        <div style="text-align: center">
-            <button class="availability-calendar" onclick="changeMonth(-1)">Previous Month</button>
-            <span id="currentMonth"><?php echo $monthName. " ". $year ?></span>
-            <button class="availability-calendar" onclick="changeMonth(1)">Next Month</button>
-            <?php
-            displayCombinedCalendar($year, $month);
-            ?>
+    <div class="singleColumn">
+        <div class="card">
+            <div style="text-align: center">
+                <button class="availability-calendar" onclick="changeMonth(-1)">Previous Month</button>
+                <span id="currentMonth"><?php echo $monthName. " ". $year ?></span>
+                <button class="availability-calendar" onclick="changeMonth(1)">Next Month</button>
+                <?php
+                displayCombinedCalendar($year, $month);
+                ?>
+            </div>
         </div>
     </div>
 </div>

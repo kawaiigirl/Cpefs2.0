@@ -1,6 +1,6 @@
 
 
-input[type=email],input[type=password] ,input[type=text],input,select,textarea{
+input[type=email],input[type=password] ,input[type=text],input,select,textarea,.nonInteractiveInput{
     width: 70%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -70,7 +70,7 @@ label,.leftData {
     margin-top: 6px;
 }
 
-input,select,.rightData,textarea{
+input,select,.rightData,textarea,.nonInteractiveInput{
     float: right;
     width: 70%;
     margin-top: 6px;
@@ -79,6 +79,7 @@ input,select,.rightData,textarea{
 }
 
 .nonInteractiveInput{
+
     border: #dedede solid 1px;
    background-color: #d2d2d2;
     position:relative;
@@ -92,7 +93,7 @@ input,select,.rightData,textarea{
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    label,.leftData,.rightData,select, input,button, input[type=submit],input[type=text],input[type=email],input[type=password] {
+    label,.leftData,.rightData,select, input,button, input[type=submit],input[type=text],input[type=email],input[type=password],.nonInteractiveInput {
         width: 100%;
         margin-top: 0;
 

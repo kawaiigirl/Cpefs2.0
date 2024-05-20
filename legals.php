@@ -11,7 +11,8 @@ AddHeader_StartMain(GetNavLinks());
 ?>
 
 <div class="row"><h1 class="header">Legals</h1>
-    <div class="card clearfix" style="margin-top: 0">
+    <div class="singleColumn">
+    <div class="card clearfix">
         <p><strong>Only financial  members will be granted access to this site and given access to the booking  facility.</strong></p>
         <p><strong>All bookings require  that the member and/or member's partner/spouse are in residence during the  booking. Eviction can result if the member has booked the unit and permits  someone other than the member and/or member's partner/spouse to use the unit  when not accompanied by the member and/or member's partner/spouse.</strong></p>
         <p>When booking accommodation online through <a href="https://www.cpefs.com.au">www.cpefs.com.au</a> ("CPEFS") you ("the Customer") agree to the following terms and conditions:</p>
@@ -105,6 +106,7 @@ AddHeader_StartMain(GetNavLinks());
             </li>
         </ol>
 </div>
+    </div>
 </div>
 
     <?php
