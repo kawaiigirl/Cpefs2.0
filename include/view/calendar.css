@@ -1,39 +1,44 @@
 .calendar-wrapper {
    /* overflow-x: auto;*/
+    overflow: hidden;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
 }
-
 th, td {
     border: 1px solid #ddd;
-
     text-align: center;
     position: relative;
     padding:0;
 }
-
 th {
     background-color: #f2f2f2;
 }
 a.available-link{
-
     cursor: pointer;
 }
 span.unavailable-day {
     background-color: #999; /* Grey for unavailable days */
+    cursor: default;
 
 }
 a.available-link, span.unavailable-day {
     display: block;
-    color: #fff;
+    color: #000000;
     text-decoration: none;
     padding: 5px;
+    text-align: left;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
-
+.key{
+    padding:10px;
+    display: inline-block;
+    width: 33.3%;
+}
 .unit-date {
     color: #555;
     font-weight: bold;
@@ -48,8 +53,6 @@ a.available-link, span.unavailable-day {
     z-index: 1;
     position: relative;
 }
-
-
 .unit-1 { background-color: #74b3de; }
 .unit-2 { background-color: #e59289; }
 .unit-3 { background-color: #7fd5a3; }
@@ -94,19 +97,12 @@ a:hover.unit-5 { background-color: #e8a53d; }
             rgba(241, 187, 103, 0.84) 20px
     );
 }
-.unavailable { background-color: #999; }
-
+.unavailable {
+    background-color: #999;
+}
 .faint-text {
     color: #ccc;
 }
-
-/* Add new CSS styles for month dropdown */
-#monthDropdown {
-    padding: 10px;
-    font-size: 14px;
-    margin: 0 10px;
-}
-
 .availability-calendar {
     background-color: #444;
     color: #fff;
@@ -114,13 +110,32 @@ a:hover.unit-5 { background-color: #e8a53d; }
     padding: 10px;
     cursor: pointer;
     width:30%;
-
 }
-
 select {
     background-color: #444;
     color: #fff;
     padding: 10px;
     border: none;
     cursor: pointer;
+}
+.change-month{
+    font-size:medium;
+    font-weight: normal;
+    height: 49px;
+    margin-top: -25px;
+}
+.change-month-large{
+}
+.change-month-small{
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .change-month-small {
+       display:revert ;
+        width: 15%;
+        margin-top: -24px;
+    }
+    .change-month-large{
+        display: none;
+    }
 }

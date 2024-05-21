@@ -42,8 +42,8 @@ AddHeader_StartMain(GetNavLinks());
                         <div class="row"><span class="leftData bookingDetailsLabel"><strong>Balance Due On:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['date_due']?></span></div>
                         <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"><strong>Total Due:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['total_due']?></span></div>
                             <div class="row"><span class="leftData bookingDetailsLabel"><strong>Payments Made:</strong></span>
-                                <span class="rightData bookingDetailsLabel">
-                                    <img src="admin/images/files.png" title="See Payments" onClick="window.location.href='booking_payments.php?id=<?=$booking['booking_id']?>'" style="cursor:pointer;" alt="See Payments"></span></div>
+                                <span class="rightData bookingDetailsLabel"><a class="nav-link book-now" href="booking_payments.php?id=<?=$booking['booking_id']?>"> See Payments</a>
+                                    </span></div>
                                 <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"><strong>Booking Status:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['booking_status']?></span></div>
                     </div>
                         <div class="row" style="padding:0;">

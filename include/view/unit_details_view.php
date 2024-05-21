@@ -10,7 +10,7 @@ global$booking;
     <h1 class="header"><button class="prev-unit" onClick="window.location.href='unit_details.php?id=<?=getPreviousUnit($_GET['id'])?>'">&#10094;</button>
         <?=show_text($booking['unit_name']) ?>
         <button class="next-unit" onClick="window.location.href='unit_details.php?id=<?=getNextUnit($_GET['id'])?>'">&#10095;</button></h1>
-
+<div class="singleColumn">
     <div class="card">
         <div id="myModal">
             <div id="images" class="slideshow-container">
@@ -34,6 +34,7 @@ global$booking;
             </div>
         </div>
     </div>
+</div>
     <div class="leftColumn">
         <h1 class="header">Features</h1>
         <div class="card" style="height: 440px;">

@@ -100,8 +100,8 @@ a.book-now:hover{
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: -29px;
-    padding: 17px 30px;
+    margin-top: -30px;
+    padding: 18px 30px 17px;
     color: white;
     font-weight: bold;
     font-size: 18px;
@@ -161,6 +161,7 @@ a.book-now:hover{
         flex-direction: column;
         text-align: center;
         width: 50%;
+
     }
 
     .nav-links.show {
@@ -179,5 +180,12 @@ a.book-now:hover{
     .banner img {
         width: 100%; /* Make the image responsive within the container */
         height: auto;
+    }
+    .prev-unit, .next-unit {
+        margin-top:-29px;
+    }
+    .nav-link {
+        padding: 15px 5px;
+        font-size: small;
     }
 }

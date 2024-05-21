@@ -45,7 +45,7 @@ AddHeader_StartMain(GetNavLinks());
     }
 </style>
 <div class="row"><h1 class="header">Units</h1>
-    <div class="midColumn">
+    <div class="singleColumn">
 <div class="card">
     <div class="slideshow-container">
         <div class="mySlides fade">

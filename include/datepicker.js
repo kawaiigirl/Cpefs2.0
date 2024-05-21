@@ -12,12 +12,12 @@ function renderCalendar(year, month) {
     const lastDay = new Date(year, month, 0).getDate();
 
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']; // Adjusted to start with Monday
+    const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
     calendarElement.innerHTML = `
       <div class="calendar-header">
-       <span class="calendar-month"><strong>${monthNames[month - 1]} ${year}</strong></span>
-<button class="prev-month" onclick="previousMonth()"><strong>&#8249;</strong></button><button class="next-month" onclick="nextMonth()"><strong>&#8250;</strong></button>
+      <span class="calendar-month"><strong>${monthNames[month - 1]} ${year}</strong></span>
+      <button class="prev-month" onclick="previousMonth()"><strong>&#8249;</strong></button><button class="next-month" onclick="nextMonth()"><strong>&#8250;</strong></button>
       </div>
       <div class="calendar-days">
         ${dayNames.map(day => `<div class="calendar-day no-pointer">${day}</div>`).join('')}

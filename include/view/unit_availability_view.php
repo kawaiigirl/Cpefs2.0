@@ -11,13 +11,22 @@ AddHeader_StartMain(GetNavLinks());
     <div class="singleColumn">
         <div class="card">
             <div style="text-align: center">
-                <button class="availability-calendar" onclick="changeMonth(-1)">Previous Month</button>
-                <span id="currentMonth"><?php echo $monthName. " ". $year ?></span>
-                <button class="availability-calendar" onclick="changeMonth(1)">Next Month</button>
+                <div style="position: relative">
+                <span id="currentMonth" style="position: relative"><h2 class="header"><?=$monthName. " ". $year ?></h2></span>
+                    <button class="availability-calendar prev-unit change-month change-month-large" onclick="changeMonth(-1)"><strong>&#8249;</strong> Previous Month</button>
+                    <button class="availability-calendar prev-unit change-month change-month-small" onclick="changeMonth(-1)"><strong>&#8249;</strong></button>
+                    <button class="availability-calendar next-unit change-month change-month-large" onclick="changeMonth(1)">Next Month <strong>&#8250;</strong></button>
+                    <button class="availability-calendar next-unit change-month change-month-small" onclick="changeMonth(1)"><strong>&#8250;</strong></button>
+                </div>
                 <?php
                 displayCombinedCalendar($year, $month);
                 ?>
             </div>
+        </div>
+        <div class="card">
+            <h3>Key</h3>
+            <span class="available-link unit-1 key"> Available</span><span class="pending unit-1 key">Pending</span><span class="unavailable unit-1 key">Unavailable</span>
+            <p>Click on an available date to book that unit.</p>
         </div>
     </div>
 </div>
@@ -41,11 +50,7 @@ AddFooter_CloseMain();
         var newDate = new Date(`${year}-${month}-01`);
         newDate.setMonth(newDate.getMonth() + offset);
 
-
-        var newMonth = newDate.toLocaleString('default', { month: 'long' });
         var newYear = newDate.getFullYear();
-
-        currentMonthElement.innerText = `${newMonth} ${newYear}`;
 
         reloadWithMonth(newDate.getMonth() + 1, newYear);
     }
