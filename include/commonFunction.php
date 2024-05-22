@@ -59,6 +59,37 @@ function datadump ($table): string
     }
     return $result . "\n\n\n";
 }
+function GetMemberFormHtml($errors): void
+{
+?>
+    <div class="leftColumn leftInner">
+        <div class="row">
+            <label for="member_email">Email</label><input type="text" name="member_email" id="member_email" value="<?=SetFromPost('member_email') ?>">
+            <?= SetFromArray($errors,'email') ?></div>
+        <div class="row"><label for="member_firstname">First Name</label>
+            <input type="text" name="member_firstname" id="member_firstname" value="<?=SetFromPost('member_firstname') ?>">&nbsp;<?= SetFromArray($errors,'firstname') ?>
+        </div>
+        <div class="row"><label for="member_lastname">Last Name</label>
+            <input type="text" name="member_lastname" id="member_lastname" value="<?=SetFromPost('member_lastname') ?>"> <?= SetFromArray($errors,'lastname') ?>
+        </div>
+        <div class="row">
+            <label for='member_address'>Address</label><input type="text" name="member_address" id="member_address" value="<?=SetFromPost('member_address') ?>">
+            <?=SetFromArray($errors,'address') ?></div>
+    </div>
+    <div class="rightColumn rightInner">
+    <div class="row">
+        <div class="row"><label for="member_suburb">Suburb</label>
+            <input type="text" name="member_suburb" id="member_suburb" value="<?=SetFromPost('member_suburb') ?>">
+            <?= SetFromArray($errors,'suburb') ?></div>
+        <label for="member_postcode">Postcode</label><input type="text" name="member_postcode" id="member_postcode" value="<?=SetFromPost('member_postcode') ?>">
+        <?=  SetFromArray($errors,'postcode') ?></div>
+    <div class="row"><label for="member_telephone">Telephone</label>
+        <input type="text" name="member_telephone" id="member_telephone" value="<?= SetFromPost('member_telephone') ?>">
+        <?= SetFromArray($errors,'phone') ?></div>
+
+    </div>
+<?php
+}
 function databaseDump(): string
 {
     $dump = datadump("cpefs_admin");
@@ -128,6 +159,14 @@ function SetFromGet($variableName) : string
         return $_GET[$variableName];
     }
     return '';
+}
+function SetFromArray($array,$variableName)
+{
+    if(isset($array[$variableName]) && $array[$variableName]!='')
+    {
+        return $array[$variableName];
+    }
+    return "";
 }
 function DisplayPost(string $variableName): void
 {

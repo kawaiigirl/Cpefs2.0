@@ -5,8 +5,8 @@ include "include/view/layout.php";
 
 global $dbc;
 
-$success = $msgFirstname = $msgLastname = $msgAddress = $msgSuburb = $msgPostcode = $msgPhone = $msgEmail= "";
-
+$success = "";
+$errors = array();
 if(isset($_POST['Submit']))
 {
     $result = validateMember($_POST['member_firstname'], $_POST['member_lastname'], $_POST['member_address'], $_POST['member_suburb'], $_POST['member_postcode'], $_POST['member_telephone'], $_POST['member_email'],$_SESSION['member_id']);

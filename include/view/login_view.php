@@ -25,8 +25,8 @@ AddHeader_StartMain(GetNavLinks());
                 ?>
                         <input type="submit" name="submit" id="submit" value="Submit">&nbsp;&nbsp;<?=$errMsg ?>
             </form>
-            <a href="forgot_password.php" class="Grey">Forgot password</a> |
-            <a href="registration.php" class="Grey">Join</a>
+            <div style="text-align: center"><a href="forgot_password.php" class="Grey">Forgot password</a> |
+            <a href="registration.php" class="Grey">Join</a></div>
         </div>
     </div>
 </div>
