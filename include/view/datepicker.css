@@ -72,5 +72,10 @@ position: relative;
     .calendar {
         width: 100%;
     }
-
+    .next-month,.prev-month {
+        margin-top:-19px;
+    }
+    .change-month-small-calendar{
+        margin-top:-20px;
+    }
 }

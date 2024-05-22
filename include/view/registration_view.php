@@ -26,15 +26,17 @@ AddHeader_StartMain(GetNavLinks());
                     </div>
                     <div class="rightColumn rightInner">
                         <div class="row">
-                            <label for="member_password1">Confirm Password</label><input type="text" name="member_password1" id="member_password1" value="<?=SetFromPost('member_password1') ?>">
+                            <label style="margin-top:0;padding-top:10px;" for="member_password1">Confirm Password</label><input type="text" name="member_password1" id="member_password1" value="<?=SetFromPost('member_password1') ?>">
                             <?= SetFromArray($errors,'password2') ?></div>
-</div>
-                    </div>
+                        </div>
+
+                    <div style="text-align: center">
                     <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY; ?>"></div>
                     <script type="text/javascript"
                         src="https://www.google.com/recaptcha/api.js?hl=en_GB">
                     </script>
                     <?php echo $msgRecaptcha?>
+                    </div>
                     <input type="submit" name="Submit" id="Submit" value="Submit">
             </form>
             <?php

@@ -4,9 +4,9 @@
 AddGenericHead();
 AddHeader_StartMain(GetNavLinks());
 ?>
-<div class="row">
+<div class="row">  <h1 class="header">My Account</h1>
     <div class="singleColumn">
-        <h1 class="header">My Account</h1>
+
     <?php
     if ($success != "")
         echo '<div class="card">' . $success . '</div>';
@@ -18,7 +18,7 @@ AddHeader_StartMain(GetNavLinks());
                 GetMemberFormHtml($errors);
                 ?>
                 <div class="rightColumn rightInner"
-                    <div class="row"><a href='change_password.php' class="book-now" style="margin-top:8px;padding:12px;text-decoration: none;color:white"><strong>Change Password</strong></a></div>
+                    <div class="row"><a href='change_password.php' class="book-now" style="margin-top:8px;margin-bottom:10px;padding:12px;text-decoration: none;color:white"><strong>Change Password</strong></a></div>
                 </div>
                 <div class="row"><input type="submit" name="Submit" id="Submit" value="Submit"></div>
             </div>

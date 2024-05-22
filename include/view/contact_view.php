@@ -17,7 +17,7 @@ AddHeader_StartMain(GetNavLinks());
     <?php
     }
     ?>
-    <div class="evenColumns">
+    <div class="leftColumn">
         <div class='card clearfix'>
             <p style="text-align: left">Castlemaine Perkins Employees Friendly Society Ltd<br>
                 GPO Box 44<br>
@@ -29,7 +29,7 @@ AddHeader_StartMain(GetNavLinks());
             </p>
         </div>
     </div>
-    <div class="evenColumns">
+    <div class="rightColumn">
         <div class='card clearfix'>
             <form method="post">
                 <div class='row'><label class="leftData" for="Name">Name:</label><input name="Name" type="text" id="Name" /></div>

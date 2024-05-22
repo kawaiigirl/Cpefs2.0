@@ -36,7 +36,7 @@ global$booking;
     </div>
 </div>
     <div class="leftColumn">
-        <h1 class="header">Features</h1>
+        <h2 class="header">Features</h2>
         <div class="card" style="height: 440px;">
             <p><?=show_text($booking['unit_location']) ?></p>
             <p>Basic - <?="$" . $booking['basic_rate'] ?><br>
@@ -48,7 +48,7 @@ global$booking;
         </div>
     </div>
     <div class="rightColumn">
-        <h1 class="header">Unit Availability</h1>
+        <h2 class="header" style="margin-top:10px">Unit Availability</h2>
         <div class="card" style="height: 440px; ">
                 <?php include "calendar.php"; ?>
                 <p><span class="Green"><strong>Pending</strong></span> - booking to be confirmed<br>
@@ -68,5 +68,5 @@ global$booking;
 <?php
 AddFooter_CloseMain();
 ?>
-<script language="javascript" src="include/view/lightbox.js"></script>
+<script src="include/view/lightbox.js"></script>
 </html>

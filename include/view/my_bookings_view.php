@@ -32,17 +32,17 @@ AddHeader_StartMain(GetNavLinks());
                 <div class="card">
                     <h2 class="header" style="text-align: left"><?=$booking['unit_name']?></h2>
                     <div class="row" style="padding:0;">
-                    <div class="leftColumn" style="width: 45%; padding-left: 0">
+                    <div class="leftColumn leftInner">
                         <div class="row"><span class="leftData bookingDetailsLabel"><strong>Invoice Number:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['invoice_number']?></span></div>
-                        <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"><strong>Check-in Date:</strong></span><span class="rightData bookingDetailsLabel"><?=date("d M Y",strtotime($booking['check_in_date']));?></span></div>
+                        <div class="row" style="background-color: #e0e0e0"><span class="leftData bookingDetailsLabel"><strong>Check-in Date:</strong></span><span class="rightData bookingDetailsLabel"><?=date("d M Y",strtotime($booking['check_in_date']));?></span></div>
                         <div class="row"><span class="leftData bookingDetailsLabel"><strong>Deposit Paid:</strong></span><span class="rightData bookingDetailsLabel"><?="$".$booking["paid"]?></span></div>
-                        <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"> <strong>Balance Paid:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['balance_paid']?></span></div>
+                        <div class="row" style="background-color: #e0e0e0"><span class="leftData bookingDetailsLabel"> <strong>Balance Paid:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['balance_paid']?></span></div>
                     </div>
-                    <div class="rightColumn" style="width: 45%;padding: 0;">
+                    <div class="rightColumn rightInner">
                         <div class="row"><span class="leftData bookingDetailsLabel"><strong>Balance Due On:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['date_due']?></span></div>
-                        <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"><strong>Total Due:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['total_due']?></span></div>
+                        <div class="row" style="background-color: #e0e0e0"><span class="leftData bookingDetailsLabel"><strong>Total Due:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['total_due']?></span></div>
                             <div class="row"><span class="leftData bookingDetailsLabel"><strong>Payments Made:</strong></span>
-                                <span class="rightData bookingDetailsLabel"><a class="nav-link book-now" href="booking_payments.php?id=<?=$booking['booking_id']?>"> See Payments</a>
+                                <span class="rightData bookingDetailsLabel tableButtonCell"><a class="tableLink book-now" href="booking_payments.php?id=<?=$booking['booking_id']?>"> See Payments</a>
                                     </span></div>
                                 <div class="row" style="background-color: #e3e3e3"><span class="leftData bookingDetailsLabel"><strong>Booking Status:</strong></span><span class="rightData bookingDetailsLabel"><?=$booking['booking_status']?></span></div>
                     </div>
