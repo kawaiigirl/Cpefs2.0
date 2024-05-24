@@ -12,7 +12,7 @@ AddHeader_StartMain(GetNavLinks());
         <div class="card">
             <div style="text-align: center">
                 <div style="position: relative">
-                <span id="currentMonth" style="position: relative"><h2 class="header"><?=$monthName. " ". $year ?></h2></span>
+                <div id="currentMonth" style="position: relative"><h2 class="header"><?=$monthName. " ". $year ?></h2></div>
                     <button class="availability-calendar prev-unit change-month change-month-large" onclick="changeMonth(-1)"><strong>&#8249;</strong> Previous Month</button>
                     <button class="availability-calendar prev-unit change-month change-month-small" onclick="changeMonth(-1)"><strong>&#8249;</strong></button>
                     <button class="availability-calendar next-unit change-month change-month-large" onclick="changeMonth(1)">Next Month <strong>&#8250;</strong></button>
@@ -36,21 +36,21 @@ AddFooter_CloseMain();
 
 <script>
     function toggleNavLinks() {
-        var navLinks = document.querySelector('.nav-links');
+        let navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('show');
     }
 
     function changeMonth(offset) {
-        var currentMonthElement = document.getElementById('currentMonth');
-        var currentMonth = currentMonthElement.innerText;
-        var [month, year] = currentMonth.split(' ');
+        let currentMonthElement = document.getElementById('currentMonth');
+        let currentMonth = currentMonthElement.innerText;
+        let [month, year] = currentMonth.split(' ');
 
         month = getMonthNumber(month);
 
-        var newDate = new Date(`${year}-${month}-01`);
+        let newDate = new Date(`${year}-${month}-01`);
         newDate.setMonth(newDate.getMonth() + offset);
 
-        var newYear = newDate.getFullYear();
+        let newYear = newDate.getFullYear();
 
         reloadWithMonth(newDate.getMonth() + 1, newYear);
     }

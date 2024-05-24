@@ -38,14 +38,14 @@ input[type=submit]:hover,button:hover {
 .password{
     font-size: 12px;
 }
-
+/*
 .register {
     background-color: white;
     padding: 20px;
     margin: 20px auto;
     width: 40%;
     min-width: 400px;
-}
+}*/
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -133,12 +133,12 @@ input,select,.rightData,textarea,.nonInteractiveInput{
     label,.leftData{
         text-align:left;
     }
-    .register{
+   /* .register{
         padding: 5px;
         margin: 5px auto;
         width: 100%;
         min-width: 200px;
-    }
+    }*/
 
     body{
         padding:0;

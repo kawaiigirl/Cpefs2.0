@@ -193,9 +193,12 @@ class DBC
         if ($parameters != null)
         {
             $stmt = $this->pdo->prepare($qry);
-
+            if(!$stmt)
+            {
+                $this->logErrorPDO($qry,$line,$file,$parameters);
+            }
             $stmt->execute($parameters);
-            if($stmt == false)
+            if(!$stmt)
             {
                 $this->logErrorPDO($qry,$line,$file,$parameters);
             }

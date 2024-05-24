@@ -154,7 +154,10 @@ a.book-now:hover{
     border-collapse: collapse;
     padding:0;
 }
-
+.unit-availability
+{
+    margin-top: 0;
+}
 @media (max-width: 600px) {
     .nav-links {
         display: none;
@@ -163,7 +166,9 @@ a.book-now:hover{
         width: 50%;
 
     }
-
+.unit-availability{
+    margin-top: 10px;
+}
     .nav-links.show {
         display: flex;
     }

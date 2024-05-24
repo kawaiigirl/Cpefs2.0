@@ -48,7 +48,7 @@ global$booking;
         </div>
     </div>
     <div class="rightColumn">
-        <h2 class="header" style="margin-top:10px">Unit Availability</h2>
+        <h2 class="header unit-availability">Unit Availability</h2>
         <div class="card" style="height: 440px; ">
                 <?php include "calendar.php"; ?>
                 <p><span class="Green"><strong>Pending</strong></span> - booking to be confirmed<br>
@@ -60,7 +60,7 @@ global$booking;
 <div class="row">
     <div class="singleColumn">
         <div class="card clearfix" style="margin-top: 0">
-            <strong><a class="nav-link book-now" href="make_booking.php?id=<?=$row['unit_id']?>">Book Now</a>
+            <strong><a class="nav-link book-now" href="make_booking.php?id=<?=$booking['unit_id']?>">Book Now</a>
             </strong>
         </div>
     </div>

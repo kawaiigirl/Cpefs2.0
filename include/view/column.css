@@ -11,14 +11,14 @@ padding-top: 10px;
     background-color: #d9d9d9;
 }
 /* Create two unequal columns that floats next to each other */
-
+/*
 .evenColumns{
     float:left;
     width: calc(50% - 20px);
     margin-left:10px;
     margin-right:10px;
     min-width: 480px;
-}
+}*/
 .midColumn{
     margin:0 auto;
     width: 75%;
@@ -76,7 +76,7 @@ padding-top: 10px;
 }
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 1000px) {
-    .leftColumn, .rightColumn,.evenColumns,.midColumn {
+    .leftColumn, .rightColumn,.midColumn {
         width: 100%;
         padding: 0 10px;
         margin-left: 0;
@@ -88,6 +88,9 @@ padding-top: 10px;
     }
     .rightInner,.leftInner{
         padding: 0;
+    }
+    .rightInner{
+        margin-top: 0;
     }
     .container{
         min-width: 100%;

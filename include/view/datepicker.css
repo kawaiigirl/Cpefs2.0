@@ -50,7 +50,7 @@ position: relative;
     grid-template-columns: repeat(7, 1fr);
 }
 .calendar-day {
-    padding: 10px;
+    padding: 10px 9px;
     border: 1px solid #ccc;
     text-align: center;
     cursor: pointer;
@@ -76,6 +76,6 @@ position: relative;
         margin-top:-19px;
     }
     .change-month-small-calendar{
-        margin-top:-20px;
+        margin-top:-19px;
     }
 }

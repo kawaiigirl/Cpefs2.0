@@ -43,10 +43,10 @@ a.available-link, span.unavailable-day {
     color: #555;
     font-weight: bold;
 }
-.calendar-unit-div{
+/*.calendar-unit-div{
     display: block;
     height: 35px;
-}
+}*/
 .unit-name{
     white-space: nowrap;
     overflow: visible;
@@ -99,9 +99,6 @@ a:hover.unit-5 { background-color: #e8a53d; }
 }
 .unavailable {
     background-color: #999;
-}
-.faint-text {
-    color: #ccc;
 }
 .availability-calendar {
     background-color: #444;

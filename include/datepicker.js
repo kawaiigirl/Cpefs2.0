@@ -42,7 +42,7 @@ function renderCalendar(year, month) {
         const dayElement = document.createElement('div');
         dayElement.classList.add('calendar-day');
         dayElement.setAttribute("id", 'day'+day);
-        dayElement.textContent = day;
+        dayElement.textContent = day.toString();
         if ([5, 6].includes((startingOffset + day - 1) % 7)) {
             dayElement.classList.add('weekend'); // Add class for weekend days
         }
