@@ -83,6 +83,10 @@ nav .container {
     width: 100%;
     text-align: center;
 }
+.change-password{
+    width:70%;
+    float:right;
+}
 a.book-now:hover{
     background-color: #0281ac;
 }
@@ -98,9 +102,10 @@ a.book-now:hover{
 .prev-unit, .next-unit {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 0;
     width: auto;
-    margin-top: -30px;
+    margin:0;
+    height:100%;
     padding: 18px 30px 17px;
     color: white;
     font-weight: bold;
@@ -158,7 +163,18 @@ a.book-now:hover{
 {
     margin-top: 0;
 }
-@media (max-width: 600px) {
+.unit-details {
+height: 440px;
+}
+@media (max-width: 1000px) {
+    .unit-availability{
+        margin-top: 10px;
+    }
+    .unit-details {
+        height:revert;
+    }
+}
+@media (max-width: 800px) {
     .nav-links {
         display: none;
         flex-direction: column;
@@ -166,9 +182,9 @@ a.book-now:hover{
         width: 50%;
 
     }
-.unit-availability{
-    margin-top: 10px;
-}
+    .unit-availability{
+        margin-top: 10px;
+    }
     .nav-links.show {
         display: flex;
     }
@@ -186,11 +202,15 @@ a.book-now:hover{
         width: 100%; /* Make the image responsive within the container */
         height: auto;
     }
-    .prev-unit, .next-unit {
-        margin-top:-29px;
-    }
+
     .nav-link {
         padding: 15px 5px;
         font-size: small;
+    }
+    .change-password{
+        width:100%
+    }
+    .unit-table{
+       font-size: small;
     }
 }

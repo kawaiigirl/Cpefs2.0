@@ -69,7 +69,7 @@ $startDayNumber = (int)date('w', $my_time);
 $startDayNumber = ((int)date('w', $my_time) === 0) ? 6 : $startDayNumber - 1;
 $daysInMonth =$noOfDays;
 ?>
-<div class="unit-calendar">
+<div id="cal" class="unit-calendar">
     <div class="calendar-header">
         <div class="calendar-month"><strong><?php echo $monthName. " ".$year; ?></strong></div>
         <button class="prev-month change-month-small-calendar" onclick="window.location.href='unit_details.php?id=<?=$_GET['id']?>&yr=<?=$previousYear?>&month=<?=$previousMonth?>#cal'">&#8249;</button>

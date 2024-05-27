@@ -66,7 +66,7 @@ AddHeader_StartMain(GetNavLinks());
         </div>
 
     </div>
-    <table style="width: 100%; border-collapse: collapse">
+    <table class="unit-table" style="width: 100%; border-collapse: collapse">
         <tr>
             <th></th>
             <th colspan="3"><strong>Rates (including linen)</strong></th>

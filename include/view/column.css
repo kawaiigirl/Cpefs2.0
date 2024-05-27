@@ -96,4 +96,21 @@ padding-top: 10px;
         min-width: 100%;
         padding:0;
     }
+    .card{
+        padding:10px;
+    }
+}
+
+@media screen and (max-width:800px){
+    .leftColumn, .rightColumn,.midColumn {
+        width: 100%;
+        padding: 0 0;
+        margin-left: 0;
+        min-width: 100%;
+    }
+.singleColumn{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 }

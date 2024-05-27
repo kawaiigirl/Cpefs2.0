@@ -19,10 +19,11 @@ position: relative;
 .prev-month, .next-month {
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 0;
     width: auto;
-    margin-top: -20px;
     padding: 8px 30px;
+    margin:0;
+    height:100%;
     color: white;
     font-weight: bold;
     font-size: 19px;
@@ -68,14 +69,9 @@ position: relative;
 .no-pointer{
     cursor: default;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .calendar {
         width: 100%;
-    }
-    .next-month,.prev-month {
-        margin-top:-19px;
-    }
-    .change-month-small-calendar{
-        margin-top:-19px;
+        padding:0;
     }
 }

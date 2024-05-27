@@ -37,7 +37,7 @@ global$booking;
 </div>
     <div class="leftColumn">
         <h2 class="header">Features</h2>
-        <div class="card" style="height: 440px;">
+        <div class="card unit-details">
             <p><?=show_text($booking['unit_location']) ?></p>
             <p>Basic - <?="$" . $booking['basic_rate'] ?><br>
                 Peak - <?="$" . $booking['peak_rate'] ?><br>
@@ -49,7 +49,7 @@ global$booking;
     </div>
     <div class="rightColumn">
         <h2 class="header unit-availability">Unit Availability</h2>
-        <div class="card" style="height: 440px; ">
+        <div class="card unit-details">
                 <?php include "calendar.php"; ?>
                 <p><span class="Green"><strong>Pending</strong></span> - booking to be confirmed<br>
                     <span class="Blue">Booked</span></p>
