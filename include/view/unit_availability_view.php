@@ -35,11 +35,6 @@ AddFooter_CloseMain();
 ?>
 
 <script>
-    function toggleNavLinks() {
-        let navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('show');
-    }
-
     function changeMonth(offset) {
         let currentMonthElement = document.getElementById('currentMonth');
         let currentMonth = currentMonthElement.innerText;

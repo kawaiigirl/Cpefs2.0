@@ -4,11 +4,12 @@ function AddGenericHead($filePath = "",$links="") : void
     ?>
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?=$filePath?>include/view/styles.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/column.css">
-    <link rel="stylesheet" href="<?=$filePath?>include/view/input_style.css">
     <link rel="stylesheet" href="<?=$filePath?>include/view/tables.css">
+    <link rel="stylesheet" href="<?=$filePath?>include/view/styles.css">
+    <link rel="stylesheet" href="<?=$filePath?>include/view/input_style.css">
     <?=$links?>
     <title>CPEFS Holiday Units</title>
 </head>
@@ -47,13 +48,13 @@ function AddHeader_StartMain($navLinks,$filePath = "") : void
 <header>
     <div class="container">
         <div class="banner">
-            <img src="<?=$filePath?>include/view/images/logo.png" alt="CPEFS Holiday Units">
+            <a href="<?=SITE_URL?>" ><img src="<?=$filePath?>include/view/images/logo.png" alt="CPEFS Holiday Units"></a>
         </div>
     </div>
 </header>
 <nav>
     <div class="container">
-        <button class="nav-button navButtonWidth" onclick="toggleNavLinks()">Menu</button>
+        <button class="nav-button navButtonWidth" onclick="toggleNavLinks()"><span class="menuClose">Close </span>Menu</button>
         <div class="nav-links">
             <?php
             foreach($navLinks as $link)
@@ -76,7 +77,7 @@ function AddFooter_CloseMain() : void
 
 <footer>
     <div class="container">
-        <p>&copy; 2024 CPEFS. All rights reserved.</p>
+        <p>&copy; <?=getCurrentYear();?> CPEFS. All rights reserved.</p>
     </div>
 </footer>
 </body>
@@ -86,6 +87,8 @@ function AddFooter_CloseMain() : void
             navLinks.classList.toggle('show');
             const navButton = document.querySelector('.nav-button');
             navButton.classList.toggle('navButtonWidth');
+            const menuClose = document.querySelector('.menuClose');
+            menuClose.classList.toggle('show');
         }
     </script>
 <?php

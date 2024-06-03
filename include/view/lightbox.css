@@ -65,7 +65,7 @@ margin:0 auto;
     background-color: #717171;
 }
 
-/* Fading animation */
+/* Fading animation
 .fade {
     animation-name: fade;
     animation-duration: 1s;
@@ -75,7 +75,7 @@ margin:0 auto;
     from {opacity: .4}
     to {opacity: 1}
 }
-
+*/
 /* The Modal (background) */
 .modal {
     display: none;
@@ -138,9 +138,6 @@ margin:0 auto;
 
     width: auto;
     padding: 16px;
-    /*margin-top: -50px;
-    top: 0;
-    transform: translateY(50%);*/
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -204,7 +201,6 @@ img.hover-shadow {
     .slideshow-container img{
         margin:0 auto;
         max-height: 640px;
-
         max-width: 100%;
         display: block;
         width: auto;
@@ -219,7 +215,7 @@ img.hover-shadow {
         background-color: black;
     }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .modal-content img {
         cursor: unset;
         max-width: 100%;

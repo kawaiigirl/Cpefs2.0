@@ -8,6 +8,10 @@ function GetCheckOutDate($check_in_date,$nights): string
 {
     return date('Y/m/d', strtotime($check_in_date. ' + '.$nights .'day'));
 }
+function getCurrentYear(): string
+{
+    return date("Y");
+}
 function getAdminPagingVariables($qry, $page, $qryParams = null, $qryParamTypes= null): array
 {
     global $dbc;

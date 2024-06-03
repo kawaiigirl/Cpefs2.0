@@ -16,6 +16,7 @@ main {
 
 footer {
     background-color: #333;
+    background: #03b0d8;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -77,8 +78,16 @@ nav .container {
     font-size: unset;
     font-family: Verdana, sans-serif;
 }
+.menuClose{
+    display: none;
+}
+.link-button{
+    display:inline-block;
+    text-decoration: none;
+    width: 50%;
+}
 .book-now {
-    background-color:#03b0d8;
+
     display:block;
     width: 100%;
     text-align: center;
@@ -87,9 +96,7 @@ nav .container {
     width:70%;
     float:right;
 }
-a.book-now:hover{
-    background-color: #0281ac;
-}
+
 
 .header {
     padding: 10px;
@@ -166,7 +173,12 @@ a.book-now:hover{
 .unit-details {
 height: 440px;
 }
-@media (max-width: 1000px) {
+.paymentSelect{
+    padding-right:20px;
+}
+
+
+@media (max-width: 900px) {
     .unit-availability{
         margin-top: 10px;
     }
@@ -212,5 +224,15 @@ height: 440px;
     }
     .unit-table{
        font-size: small;
+    }
+    .menuClose.show{
+        display: inline;
+    }
+    .link-button{
+
+        width: 100%;
+    }
+    .paymentSelect{
+        padding-right:0;
     }
 }

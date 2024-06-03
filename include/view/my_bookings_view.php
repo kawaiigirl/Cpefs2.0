@@ -46,20 +46,15 @@ AddHeader_StartMain(GetNavLinks());
         }
         else
         {
-            echo '<div class="card"><span style="color: red">You have no current booking</span></div>';
+            echo '<div class="card"><span style="color: red">You have no current bookings</span></div>';
         }
 ?>
+        <?php
+        if(count($pastBookings)>0)
+        {?>
+            <div class="card" style="text-align: center"><a href="past_bookings.php" class="nav-link link-button">View Past Bookings</a></div>
 
         <?php
-        if(count($displayPastBookings)>0)
-        {
-        ?>
-            <h2 class="header">Past Bookings</h2>
-        <?php
-            foreach($displayPastBookings as $booking)
-            {
-                DisplayBooking($booking,true);
-            }
         }
         ?>
     </div>

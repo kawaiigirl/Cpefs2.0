@@ -5,47 +5,51 @@ AddGenericHead();
 
 AddHeader_StartMain(GetNavLinks());
 ?>
+<style>
+    td{
+
+        padding: 5px;
+        border: 1px #dfdfdf solid;
+        border-spacing: 0;
+    }
+    th{
+        background-color: #dfdfdf;
+    }
+    table{
+        width:100%;text-align: center;border: 1px #dfdfdf;border-collapse:collapse;
+    }
+</style>
 <div class="row"><h1 class="header">My Bookings</h1>
+    <div class="singleColumn">
+    <div class="card"><a class="nav-link" href="my_bookings.php"><< Back to My Bookings</a></div>
     <div class="card">
-        <table width="100%" cellspacing="0" cellpadding="0">
+       <h2>Payments Made for Booking ID <?=$_GET["id"]; ?></h2>
+        <table>
             <tr>
-                <td width="33%"><a href="my_bookings.php"><< Back to My Bookings</a></td>
-                <td width="33%"></td>
-                <td width="33%"></td>
+                <th><strong>Member</strong></th>
+                <th><strong>Unit</strong></th>
+                <th><strong>Check In Date</strong></th>
+                <th><strong>Rate</strong></th>
+                <th><strong>Paid</strong></th>
             </tr>
             <tr>
-                <td class="body_head1"></td>
-                <td align="center" class="body_bg1">
-                    <strong>Payments Made for Booking ID <?php echo $_GET["id"]; ?></strong></td>
-                <td class="body_head2">&nbsp;</td>
-            </tr>
-        </table>
-        <table width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCD5E6" style="border-collapse :collapse" align="center">
-            <tr>
-                <td align="center" class="heading"><strong>Member</strong></td>
-                <td align="center" class="heading"><strong>Unit</strong></td>
-                <td align="center" class="heading"><strong>Check In Date</strong></td>
-                <td align="center" class="heading"><strong>Rate</strong></td>
-                <td align="center" class="heading"><strong>Paid</strong></td>
-            </tr>
-            <tr>
-                <td align="center" class="bgc2"><?php echo show_text($row["member_name"]); ?></td>
-                <td align="center" class="bgc2"><?php echo show_text($row["unit_name"]); ?></td>
-                <td align="center" class="bgc2"><?php echo show_text($row["check_in_date"]); ?></td>
-                <td align="center" class="bgc2"><?php echo show_text($row["rate"]); ?></td>
-                <td align="center" class="bgc2"><?php echo show_text($row["paid"]); ?></td>
+                <td><?php echo show_text($row["member_name"]); ?></td>
+                <td><?php echo show_text($row["unit_name"]); ?></td>
+                <td><?php echo show_text($row["check_in_date"]); ?></td>
+                <td><?php echo show_text($row["rate"]); ?></td>
+                <td><?php echo show_text($row["paid"]); ?></td>
             </tr>
         </table>
-        <table width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCD5E6" style="border-collapse :collapse" align="center">
+        <table>
             <tr>
-                <td width="7%" align="center" class="heading" style="background-color:#dfdfdf"><strong>Date</strong>
-                </td>
-                <td width="7%" align="center" class="heading" style="background-color:#dfdfdf"><strong>Time</strong>
-                </td>
-                <td width="5%" align="center" class="heading" style="background-color:#dfdfdf">
-                    <strong>Payment Method</strong></td>
-                <td width="7%" align="center" class="heading" style="background-color:#dfdfdf"><strong>Amount</strong>
-                </td>
+                <th><strong>Date</strong>
+                </th>
+                <th><strong>Time</strong>
+                </th>
+                <th>
+                    <strong>Payment Method</strong></th>
+                <th><strong>Amount</strong>
+                </th>
             </tr>
             <?php
             if ($rows > 0)
@@ -60,16 +64,16 @@ AddHeader_StartMain(GetNavLinks());
                         $color = "bgc2";
                     ?>
                     <tr class="<?php echo $color ?>">
-                        <td align="center" style="padding-left:2px;">
+                        <td>
                             <?php echo date("d M Y", strtotime($row["date"])); ?>
                         </td>
-                        <td align="center" style="padding-left:2px;">
+                        <td>
                             <?php echo date("h:ia", strtotime($row["date"])); ?>
                         </td>
-                        <td align="center" style="padding-left:2px;">
+                        <td>
                             <?php echo show_text($row["payment_method"]) ?>
                         </td>
-                        <td align="center" style="padding-left:2px;">
+                        <td>
                             <?php echo "$" . $row["amount"] ?>
                         </td>
                     </tr>
@@ -80,7 +84,7 @@ AddHeader_StartMain(GetNavLinks());
             {
                 ?>
                 <tr>
-                    <td align="center" colspan="12" height="100" valign="middle" class="error">
+                    <td colspan="12" height="100" style="vertical-align: center" class="error">
                         <b>No Payment Records!</b>
                     </td>
                 </tr>
@@ -89,6 +93,7 @@ AddHeader_StartMain(GetNavLinks());
             ?>
 
         </table>
+    </div>
     </div>
 </div>
 <?php

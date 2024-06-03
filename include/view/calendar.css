@@ -125,12 +125,16 @@ select {
 .change-month-small{
     display: none;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     .change-month-small {
        display:revert ;
         width: 15%;
     }
     .change-month-large{
         display: none;
+    }
+    a.available-link, span.unavailable-day {
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }

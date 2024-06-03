@@ -51,7 +51,7 @@ padding-top: 10px;
 .leftInner,.rightInner{
 
     width: 50%;
-    min-width: 460px;
+    min-width: 347px;
     padding:0;
 }
 
@@ -74,8 +74,8 @@ padding-top: 10px;
     display: table;
     clear: both;
 }
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 1000px) {
+/* Responsive layout - when the screen is less than 1000px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 900px) {
     .leftColumn, .rightColumn,.midColumn {
         width: 100%;
         padding: 0 10px;
@@ -112,5 +112,7 @@ padding-top: 10px;
     padding-left: 0;
     padding-right: 0;
 }
-
+    .rightInner,.leftInner {
+    width: 100%;
+    }
 }
