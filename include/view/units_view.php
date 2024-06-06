@@ -1,34 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-AddGenericHead("","<link rel='stylesheet' href='include/view/slideshow.css'>");
+AddGenericHead("","<link rel='stylesheet' href='include/view/fading.css'>");
 
 AddHeader_StartMain(GetNavLinks());
 ?>
-<style>
-
-
-</style>
 <div class="row"><h1 class="header">Units</h1>
     <div class="singleColumn">
 <div class="card">
-    <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="include/view/images/units/beachhaven.jpg" style="width:100%" alt="Beach Haven">
-            <div class="text">Beach Haven</div>
-        </div>
-        <div class="mySlides fade">
-            <img src="include/view/images/units/cocobay.jpg" style="width:100%" alt="Coco Bay">
-            <div class="text">Coco Bay</div>
-        </div>
-        <div class="mySlides fade">
-            <img src="include/view/images/units/focus.jpg" style="width:100%" alt="Focus">
-            <div class="text">Focus</div>
-        </div>
-        <div class="mySlides fade">
-            <img src="include/view/images/units/peninsular.jpg" style="width:100%" alt="Peninsula">
-            <div class="text">Peninsula</div>
-        </div>
+    <div class="pic-container">
+        <div class="pic" id="pic4"><div class="text">Peninsula</div></div>
+        <div class="pic" id="pic3"><div class="text">Focus</div></div>
+        <div class="pic" id="pic2"><div class="text">Coco Bay</div></div>
+        <div class="pic" id="pic1"><div class="text">Beach Haven</div></div>
     </div>
     <table class="unit-table" style="width: 100%; border-collapse: collapse">
         <tr>
@@ -73,23 +57,4 @@ AddHeader_StartMain(GetNavLinks());
 <?php
 AddFooter_CloseMain();
 ?>
-<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}
-
-        slides[slideIndex-1].style.display = "block";
-
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-</script>
 </html>

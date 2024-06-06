@@ -1,0 +1,82 @@
+.pic-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    aspect-ratio: 20 / 9;
+}
+.pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-animation: fade 20s infinite;
+    animation: fade 20s infinite;
+}
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.55);
+}
+#pic1 {
+    animation-delay: 0s;
+    background-image: url('https://localhost/cpefs2.0/include/view/images/units/beachhaven.jpg');
+}
+#pic2 {
+    background-image: url('https://localhost/cpefs2.0/include/view/images/units/cocobay.jpg');
+    animation-delay: 5s;
+}
+#pic3 {
+    background-image: url('https://localhost/cpefs2.0/include/view/images/units/focus.jpg');
+    animation-delay: 10s;
+}
+#pic4 {
+    background-image: url('https://localhost/cpefs2.0/include/view/images/units/peninsular.jpg');
+    animation-delay: 15s;
+}
+@-webkit-keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    15% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}@keyframes fade {
+     0% {
+         opacity: 1;
+     }
+     15% {
+         opacity: 1;
+     }
+     25% {
+         opacity: 0;
+     }
+     90% {
+         opacity: 0;
+     }
+     100% {
+         opacity: 1;
+     }
+ }
