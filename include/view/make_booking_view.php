@@ -50,13 +50,13 @@ AddHeader_StartMain(GetNavLinks());
         <div class="rightColumn">
             <div class="card">
                 <div class="row">
-                    <div class="calendar" id="calendar"></div>
-                    <input type="hidden" id="check_in_date" name="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>">
-                </div>
-                <div class="row">
                     <div class="leftData doubleLineLabel">Check-In-Date</div>
                     <div class="nonInteractiveInput" id="check_in_date_div"><?php DisplayPost('check_in_date')?></div>
                     <span class='error'><?php if (isset($errors['check_in_date'])) echo $errors['check_in_date']; ?></span>
+                </div>
+                <div class="row">
+                    <div class="calendar" id="calendar" tabindex="0"></div>
+                    <input type="hidden" id="check_in_date" name="check_in_date" placeholder="Select a date" readonly value="<?php DisplayPost('check_in_date')?>">
                 </div>
             </div>
         </div>
@@ -64,7 +64,8 @@ AddHeader_StartMain(GetNavLinks());
     <div class="row">
             <div class="singleColumn">
                 <div class="card clearfix" style="margin-top: 0">
-                    <label class="checkboxLabel" for="agree">I agree to the <a href="legals.php">Legal Terms </a></label><input type="checkbox" name="agree" id='agree' value="yes"><span class='error'><?php if (isset($errors['agree'])) echo $errors['agree']; ?></span>
+                    <label class="checkboxLabel" for="agree">I agree to the <a href="legals.php">Legal Terms </a></label><input type="checkbox" name="agree" id='agree' value="yes">
+                    <span class='error'><?php if (isset($errors['agree'])) echo $errors['agree']; ?></span>
                     <input type="submit" name="button" id="button" value="Submit">
                 </div>
             </div>
@@ -77,34 +78,38 @@ AddFooter_CloseMain();
 
 <script src="include/datepicker.js"></script>
 <?php
-
-if(IsPostSetAndNotEmpty('check_in_date'))
+if($success=="")
 {
-    $checkInDate =  SetFromPost('check_in_date');
-    $checkInDateArray = explode('/', SetFromPost('check_in_date'));
-    $day = "day". $checkInDateArray[2];
-    echo "<script>
-
+    if (IsPostSetAndNotEmpty('check_in_date'))
+    {
+        $checkInDate = SetFromPost('check_in_date');
+        $checkInDateArray = explode('/', SetFromPost('check_in_date'));
+        $day = "day" . (int)$checkInDateArray[2];
+        echo "<script>
         // Initialize calendar
         const today = new Date();
-        console.log('$checkInDateArray[0] $checkInDateArray[1]')
-         selectedDate = new Date($checkInDateArray[0], $checkInDateArray[1] - 1, $checkInDateArray[2]);
+        selectedDate = new Date($checkInDateArray[0], $checkInDateArray[1] - 1, $checkInDateArray[2]);
         year = $checkInDateArray[0];
         month = $checkInDateArray[1];
         renderCalendar(year, month);
         selectDate(selectedDate,'$day')
         </script>";
-}
-else{
-    echo "<script language='javascript'>
+    }
+    else
+    {
+        echo "<script>
         // Initialize calendar
         const today = new Date();
         renderCalendar(today.getFullYear(), today.getMonth() + 1);
         </script>";
+    }
 }
 // Output JavaScript code to set focus based on the PHP variable
 if ($focusOnError != "") {
-    echo "<script>document.getElementById('".$focusOnError."').focus();</script>";
+    echo "<script>window.setTimeout(function () { 
+    document.getElementById('".$focusOnError."').focus();
+}, 0);</script>";
 }
+
 ?>
 </html>

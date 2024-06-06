@@ -225,13 +225,13 @@ class Booking
         if($msgCheckInDate != '')
         {
             $errorArray['check_in_date'] = $msgCheckInDate;
-            $focusOnError = "check_in_date";
+            $focusOnError = "calendar";
         }
         $msgPeakBooking = $this->validatePeakBooking();
         if($msgPeakBooking !='')
         {
             $errorArray['check_in_date'] = $msgPeakBooking;
-            $focusOnError = "check_in_date";
+            $focusOnError = "calendar";
         }
         return array('focusOnError'=>$focusOnError,'errMsg'=>$errorArray);
     }

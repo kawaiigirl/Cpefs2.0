@@ -51,6 +51,7 @@ function renderCalendar(year, month) {
             dayElement.classList.add('disabled'); // Disable days before today
         } else {
             dayElement.addEventListener('click', () => {
+                console.log("im doin stuff");
                 selectDate(currentDateObject,'day'+day);
             });
         }
@@ -63,7 +64,6 @@ function selectDate(date,clickedOnDayElement) {
     if (selectedDay) {
         selectedDay.classList.remove('selected');
     }
-
     selectedDate = date;
     const newSelectedDay =  document.getElementById(clickedOnDayElement);
     newSelectedDay.classList.add('selected');
@@ -113,8 +113,10 @@ function reSelectDay()
         selectedYear = parseInt(selectedDateArray[2]);
         selectedMonth = parseInt(selectedDateArray[1]);
         selectedDay = parseInt(selectedDateArray[0]);
+
         if (selectedMonth === currentMonth && selectedYear === currentYear) {
             selectDate(selectedDate, 'day' + selectedDay)
         }
+
     }
 }

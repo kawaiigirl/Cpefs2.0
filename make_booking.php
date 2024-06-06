@@ -33,6 +33,7 @@ elseif(isset($_POST['button']))
         $validationResult = $newBooking->validateBooking();
         $errors = $validationResult['errMsg'];
         $focusOnError = $validationResult['focusOnError'];
+        echo $focusOnError;
         if((isset($_POST['agree']) && $_POST['agree'] != "yes") || !isset($_POST['agree']))
         {
             $errors['agree'] = "&nbsp;[Required]";
