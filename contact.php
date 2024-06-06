@@ -2,6 +2,7 @@
 use ReCaptcha\ReCaptcha;
 include "include/base_includes.php";
 include("include/view/layout.php");
+include "include/phpmailer/PHPMailer.php";
 $responseMsg = "";
 if(isset($_POST['Submit'])) {
 

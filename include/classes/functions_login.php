@@ -54,13 +54,15 @@ function validateNewPassword($newPassword, $confirmPassword): array
     $returnArray['errors'] = false;
     if(!$validator->General($newPassword))
     {
-        $returnArray['newPassword'] = "<span class='error'> [Required]</span>";
+        $returnArray['member_password'] = "<span class='error'> [Required]</span>";
         $returnArray['errors'] = true;
+        $returnArray['focus']="member_password";
     }
     if($newPassword != $confirmPassword)
     {
-        $returnArray['confirmPassword'] = "<span class='error'> [Passwords Don't Match]</span>";
+        $returnArray['member_password1'] = "<span class='error'> [Passwords Don't Match]</span>";
         $returnArray['errors'] = true;
+        $returnArray['focus']="member_password1";
     }
     return $returnArray;
 }
@@ -145,61 +147,71 @@ function validateMember($first_name, $last_name, $address, $suburb, $postcode, $
     $validator = new Validator();
     $returnArray = array();
     $returnArray['errors'] = 0;
-    $returnArray['pwd_errors'] = 0;
     if(!$validator->General($first_name))
     {
         $returnArray['firstname'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_firstname";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($last_name))
     {
         $returnArray['lastname'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_lastname";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($address))
     {
         $returnArray['address'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_address";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($suburb))
     {
         $returnArray['suburb'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_suburb";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($postcode))
     {
         $returnArray['postcode'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_postcode";
+        $returnArray['errors'] = true;
     }
     elseif(!$validator->Number($postcode))
     {
         $returnArray['postcode'] = "<span class='error'> [Post Code must be a number]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_postcode";
+        $returnArray['errors'] = true;
     }
     elseif($postcode < "4000" || $postcode > "4999")
     {
         $returnArray['postcode'] = "<span class='error'> [Post Code must to start with 4]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_postcode";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($phone))
     {
         $returnArray['phone'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_telephone";
+        $returnArray['errors'] = true;
     }
     if(!$validator->General($email))
     {
         $returnArray['email'] = "<span class='error'> [Required]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_email";
+        $returnArray['errors'] = true;
     }
     elseif(!$validator->Email($email))
     {
         $returnArray['email'] = "<span class='error'> [Invalid Email Address]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_email";
+        $returnArray['errors'] =true;
     }
     elseif(validateEmail($email, "member", $id))
     {
         $returnArray['email'] = "<span class='error'> [This Email Address already exists]</span>";
-        $returnArray['errors'] = 1;
+        $returnArray['focus'] = "member_email";
+        $returnArray['errors'] =true;
     }
     return $returnArray;
 }
@@ -313,7 +325,7 @@ function verifyAdminLogin($email, $password): array
     $returnArray = array();
     $returnArray['password_expired'] = false;
 
-    if(password_verify($password, $row['password']))
+    if($row && password_verify($password, $row['password']))
     {
         if($row['password_expired'])
         {
